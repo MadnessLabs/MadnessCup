@@ -11240,4 +11240,8 @@ a.item, ion-item[ui-sref], ion-item[ng-click], .button-stable {
     display: block;
     margin: 0 auto; }
 
+.state-round .card .stage {
+  font-weight: bold;
+  text-align: center;
+  font-size: 25px; }
 

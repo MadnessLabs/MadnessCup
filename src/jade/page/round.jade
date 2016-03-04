@@ -1,12 +1,15 @@
 ion-view(view-title='Round')
     ion-content(class='state-round')
-        .card.stage-image
-            ion-list    
-                ion-item.item-avatar.playerOne
-                    img(src="#")
-                    h3.playerName Bobby
-                h1 VS
-                ion-item.item-avatar.playerTwo
-                    img(src="#")
-                    h3.playerName Emmy
-            h1.item.stage Final Destination
+        .card.stage-image 
+            .row 
+                .col-xs-4
+                    div.playerOne
+                        img(src="#")
+                        h3.playerName Bobby
+                .col-xs-4
+                    div VS
+                .col-xs-4
+                    div.playerTwo
+                        img(src="#")
+                        h3.playerName Emmy
+            .item.stage Final Destination
