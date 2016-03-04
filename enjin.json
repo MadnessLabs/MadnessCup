@@ -134,6 +134,28 @@
     "img": {
         "dir": "img/",
         "favicon": "resources/icon.png",
+        "process": [
+            { 
+                "folder": "character", 
+                "width": 800,
+                "crop": false
+            },
+            {
+                "folder": "stage",
+                "width": 1920,
+                "crop": false
+            },
+            {
+                "folder": "splash",
+                "width": 1920,
+                "crop": false
+            },
+            {
+                "folder": "logo",
+                "width": 1024,
+                "crop": false
+            }
+        ],
         "watch": [
             "resources/**"
         ]
