@@ -1,0 +1,36 @@
+
+<ion-view title="Profile">
+  <ion-nav-buttons side="right"><a ng-click="$root.goBack();" class="button button-clear icon ion-close-round"></a></ion-nav-buttons>
+  <ion-content padding="true" class="has-header">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <photo-upload image="ctrl.user.user_avatar" host-url="$root.host.api" fallback="'./img/avatar.png'" on-complete="ctrl.setPhoto(res)" upload-url="$root.host.api + '/v1/user/' + ctrl.user.user_id + '/photo'" upload-data="ctrl.uploadData"></photo-upload>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <form ng-submit="ctrl.update()">
+          <div class="card">
+            <ion-list>
+              <ion-item class="item-divider">Profile Settings</ion-item>
+              <label class="item item-input"><span class="input-label">Name</span>
+                <input type="text" placeholder="None on file" ng-model="ctrl.user.user_name"/>
+              </label>
+              <label class="item item-input"><span class="input-label">Address</span>
+                <input ion-google-place="ion-google-place" placeholder="{{ctrl.user.user_address}}" ng-model="ctrl.address" type="text" readonly="readonly" autocomplete="off" class="ion-google-place"/>
+              </label>
+              <label class="item item-input"><span class="input-label">Phone</span>
+                <input type="text" placeholder="None on file" ng-model="ctrl.user.user_phone"/>
+              </label>
+              <label class="item item-input"><span class="input-label">E-mail</span>
+                <input type="text" placeholder="None on file" ng-model="ctrl.user.user_email"/>
+              </label>
+              <label class="item item-input"><span class="input-label">Company</span>
+                <input type="text" placeholder="None on file" ng-model="ctrl.user.user_company"/>
+              </label><a ng-click="ctrl.changePassword()" class="button button-stable button-block button-clear icon-right ion-android-lock">Change Password</a>
+            </ion-list>
+          </div>
+          <button type="submit" class="button button-outline button-block button-positive icon-right ion-android-send">Update Profile</button>
+        </form>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,38 @@
+
+<ion-view title="Refer A Flood" class="state-refer">
+  <ion-content padding="true" class="has-header">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <div class="circle"><i class="icon ion-help"></i>
+          <h2>It's Simple...</h2>
+          <p>Fill out the customer's information in the form and hit the submit button</p>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <form name="referForm" ng-submit="ctrl.submit()" novalidate="">
+          <div class="card">
+            <ion-list>
+              <ion-item class="item-divider">Customer Information</ion-item>
+              <label class="item item-input"><span ng-class="{&quot;warn&quot;:referForm.name.$invalid &amp;&amp; !referForm.name.$pristine}" class="input-label">Name</span>
+                <input type="text" name="name" placeholder="" allow-pattern="[a-zA-Z ]" ng-model="ctrl.job.customer" required=""/>
+              </label>
+              <label class="item item-input"><span ng-class="{&quot;warn&quot;:referForm.address.$invalid &amp;&amp; !referForm.address.$pristine}" class="input-label">Address</span>
+                <input type="text" name="address" placeholder="" ng-model="ctrl.job.address" required=""/>
+              </label>
+              <label class="item item-input"><span ng-class="{&quot;warn&quot;:referForm.phone.$invalid &amp;&amp; !referForm.phone.$pristine}" class="input-label">Phone</span>
+                <input type="tel" name="phone" pattern="[0-9]*" allow-pattern="[0-9]" placeholder="" ng-model="ctrl.job.phone" required="" minlength="10" maxlength="11"/>
+              </label>
+              <label class="item item-input"><span ng-class="{&quot;warn&quot;:referForm.email.$invalid &amp;&amp; !referForm.email.$pristine}" class="input-label">E-mail</span>
+                <input type="email" name="email" pattern="" placeholder="" ng-model="ctrl.job.email" required=""/>
+              </label>
+              <label class="item item-input"><span class="input-label">Cause</span>
+                <textarea placeholder="" ng-model="ctrl.job.notes"> </textarea>
+              </label>
+            </ion-list>
+          </div>
+          <button type="submit" ng-disabled="referForm.$invalid" class="button button-outline button-positive ion-android-send icon-right button-block">Submit</button>
+        </form>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

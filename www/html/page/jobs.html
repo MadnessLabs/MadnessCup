@@ -1,0 +1,66 @@
+
+<ion-view title="Referrals" cache-view="false" class="state-jobs">
+  <ion-content padding="true" class="has-header hasMFB">
+    <ion-refresher pulling-text="Pull to Refresh" on-refresh="ctrl.getJobs(true)"></ion-refresher>
+    <div ng-show="ctrl.pending.length" class="pending">
+      <h1>
+         
+        Pending <i ng-click="ctrl.getHelp($event, 'Pending Referrals', 'These are your referrals that we are trying to convert.  If they are converted they will move into Incoming below.')" class="icon ion-help-circled"></i>
+      </h1>
+      <div class="row">
+        <div ng-repeat="job in ctrl.pending" class="col-xs-6 col-sm-4 col-md-3">
+          <div id="job" class="card">
+            <div set-background="set-background" host="$root.host.url" fallback="'./img/curbshot.png'" image="job.job_picture" class="item item-image"></div>
+            <ion-item class="item-icon-right"><i ng-click="ctrl.quickControls($event, job)" ng-show="job.job_address || job.job_phone || job.job_cell" class="icon ion-android-more-vertical"></i>
+              <h2>{{job.job_customer}}</h2>
+            </ion-item>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="incoming">
+      <h1>
+         
+        Incoming <i ng-click="ctrl.getHelp($event, 'Incoming Payments', 'These are your referrals that we have converted and you can expect payment on.  If they are marked as &quot;TBD&quot; they are still To Be Determined, meaning we are still calculating the total owed for this job. The total amount of incoming payments is displayed at the bottom left of the screen.')" ng-show="ctrl.incoming.length" class="icon ion-help-circled"></i>
+      </h1>
+      <div ng-show="ctrl.incoming.length" class="row">
+        <div ng-repeat="job in ctrl.incoming" class="col-xs-6 col-sm-4 col-md-3">
+          <div id="job" class="card">
+            <div set-background="set-background" host="$root.host.url" fallback="'./img/curbshot.png'" image="job.job_picture" class="item item-image"><span ng-show="job.job_payable" class="badge badge-calm">{{job.job_payable | currency}}</span><span ng-hide="job.job_payable" class="badge badge-calm">TBD</span></div>
+            <ion-item class="item-icon-right"><i ng-click="ctrl.quickControls($event, job)" ng-show="job.job_address || job.job_phone || job.job_cell" class="icon ion-android-more-vertical"></i>
+              <h2>{{job.job_customer}}</h2>
+            </ion-item>
+          </div>
+        </div>
+      </div>
+      <div ng-hide="ctrl.incoming.length" class="fallback"><i class="icon ion-sad-outline"></i>
+        <p>No Incoming Referral Payments</p>
+      </div>
+    </div>
+    <div ng-show="ctrl.history.length" class="history">
+      <h1>
+         
+        History <i ng-click="ctrl.getHelp($event, 'Referral History', 'These are your past referrals.  If they have been paid they will have a green bubble with the amount received and if they failed to be converted then they will not have a green bubble.')" class="icon ion-help-circled"></i>
+      </h1>
+      <div class="row">
+        <div ng-repeat="job in ctrl.history | limitTo: ctrl.limit" class="col-xs-6 col-sm-4 col-md-3">
+          <div id="job" class="card">
+            <div set-background="set-background" host="$root.host.url" fallback="'./img/curbshot.png'" image="job.job_picture" class="item item-image"><span ng-show="job.job_payable" class="badge badge-calm">{{job.job_payable | currency}}</span></div>
+            <ion-item>
+              <h2>{{job.job_customer}}</h2>
+            </ion-item>
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-3">
+          <div ng-click="ctrl.showHistory()" ng-show="ctrl.history.length &gt; ctrl.limit" class="card show-history"><i class="icon ion-android-time"></i>
+            <h2>View All</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+  <div class="footer"><i class="icon ion-social-usd"></i><span>{{ctrl.owed}}<small>.00</small></span>
+    <p>Incoming</p>
+  </div>
+  <button mfb-menu="mfb-menu" position="br" resting-icon="ion-plus-round" active-icon="ion-plus-round" ui-sref="refer" class="theme-positive"></button>
+</ion-view>

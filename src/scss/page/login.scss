@@ -1,0 +1,134 @@
+// IMPORTS
+@import '../variables';
+
+
+@keyframes slide {
+  from{
+    background-position: 0 0;
+  }
+  to{
+    background-position: -193px 0;
+  }
+}
+
+@keyframes dip {
+  0%{
+    height:1px;
+  }
+  50%{
+    height:30px;
+  }
+  100%{
+    height:1px;
+  }
+}
+
+// PAGE STYLES
+.state-login{
+    background:$positive !important;
+    .banner{
+        background: #ffffff;
+        background: -moz-linear-gradient(top,  #ffffff 46%, #bdbdbd 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(46%,#ffffff), color-stop(100%,#bdbdbd));
+        background: -webkit-linear-gradient(top,  #ffffff 46%,#bdbdbd 100%);
+        background: -o-linear-gradient(top,  #ffffff 46%,#bdbdbd 100%);
+        background: -ms-linear-gradient(top,  #ffffff 46%,#bdbdbd 100%);
+        background: linear-gradient(to bottom,  #ffffff 46%,#bdbdbd 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#bdbdbd',GradientType=0 );
+        background-size:cover;
+        height:350px;
+        padding:10px 0 0 0;
+        position:relative;
+        img{
+            display:block;
+            margin:0 auto;
+            max-width:90%;
+        }
+        .water{
+            position:absolute;
+            width:100%;
+            bottom:0;
+            animation: dip 10s ease infinite;
+            height:1px;
+            background-color:$positive;
+            border:none !important;
+            .waves{
+                display:block;
+                width:100%;
+                height:22px;
+                position: absolute;
+                top:-22px;
+                background-image:url('../img/waves.png');
+                background-repeat:repeat-x;
+                animation: slide 5s linear infinite;
+                border:none !important;
+                image-rendering: pixelated;
+            }
+        }   
+
+    }
+    form{
+        max-width:400px;
+        display:block;
+        margin:0 auto;
+        button{
+            margin-left: auto;
+            margin-right: auto;
+            width: 95%;
+        }
+    }
+
+    .icon{
+        display:block;
+        height:80px;
+        width:80px;
+        bottom:15px;
+        left:15px;
+        position:absolute;
+    }
+
+    .branding{
+        display:block;
+        position: absolute;
+        right:15px;
+        bottom:15px;
+    }
+
+    @media (max-width: $screen-sm) {
+        .banner{
+            height:225px;
+            img{
+                max-width: 70%;
+            }
+        }
+    }
+
+    @media (max-width: $screen-xs) {
+        .banner{
+            height:150px;
+            img{
+                max-width: 60%;
+            }
+        }
+        .icon{
+            height:55px;
+            width:55px;
+        }
+        .branding{
+            img{
+                max-height:50px;
+            }
+        }
+    }
+    .footer{
+        background:none;
+    }
+}
+.avatar{ 
+    max-width: 100%;
+    img{
+       border-radius: 100%; 
+       display: block;
+       margin: 0 auto;
+    }
+}

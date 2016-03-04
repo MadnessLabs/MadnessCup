@@ -1,0 +1,27 @@
+
+<ion-view title="Points" class="state-points">
+  <ion-content padding="true" class="has-header hasMFB">
+    <ion-refresher pulling-text="Pull to Refresh" on-refresh="ctrl.getLeaderboard(true)"></ion-refresher>
+    <div class="featured">
+      <div class="card"><img src="img/contest-banner.png"/>
+        <ion-item class="item-text-wrap">
+          <h2>Trailmaster Challenger</h2><span class="badge">Ends 6/1/16</span>
+          <p>The person with the most points on the leaderboard below by the end of the contest will walk away with the keys to a new Trailmaster Challenger, courtesy of The Flood Team.  Start referring floods today and drive this ATV into your life!</p>
+        </ion-item>
+      </div>
+    </div>
+    <div class="leaderboard">
+      <div class="card">
+        <ion-list>
+          <ion-item class="item-divider">Leaderboard</ion-item>
+          <ion-item ng-repeat="leader in ctrl.leaderboard">
+            <h2>{{leader.user.user_name}}</h2><span class="badge">{{leader.total}} Points</span>
+          </ion-item>
+        </ion-list>
+      </div>
+    </div>
+  </ion-content>
+  <div class="footer"><i class="icon ion-waterdrop"></i><span>{{$root.session.user_points}}</span>
+    <p>Points</p>
+  </div>
+</ion-view>

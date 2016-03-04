@@ -1,0 +1,48 @@
+
+<ion-view title="Register" class="state-register">
+  <ion-nav-buttons side="left"><i ui-sref="login" class="button button-clear icon ion-arrow-left-c"></i></ion-nav-buttons>
+  <ion-nav-buttons side="right"><i ui-sref="login" class="button button-clear icon ion-close-round"></i></ion-nav-buttons>
+  <ion-content padding="true" class="has-header">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 instructions">
+        <div class="circle"><i class="icon ion-help"></i>
+          <h2>It's Simple...</h2>
+          <p>Fill out your information in the form and hit the submit button to start referring</p>
+        </div><img src="img/logo.png"/>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <form name="registerForm" ng-submit="ctrl.register(registerForm)" novalidate="">
+          <div class="card"> 
+            <ion-list>
+              <ion-item class="item-divider">User Information</ion-item>
+              <label class="item item-input"><span ng-class="{&quot;warn&quot;:registerForm.name.$invalid &amp;&amp; !registerForm.name.$pristine}" class="input-label">Name</span>
+                <input type="text" name="name" placeholder="First Last" allow-pattern="[a-zA-Z ]" ng-model="ctrl.user.name" required=""/>
+              </label>
+              <label class="item item-input"><span ng-class="{&quot;warn&quot;:registerForm.address.$invalid &amp;&amp; !registerForm.address.$pristine}" class="input-label">Address</span>
+                <input ion-google-place="ion-google-place" placeholder="Click to Autocomplete" ng-model="ctrl.address" type="text" readonly="readonly" autocomplete="off" class="ion-google-place"/>
+              </label>
+              <label class="item item-input"><span ng-class="{&quot;warn&quot;:registerForm.phone.$invalid &amp;&amp; !registerForm.phone.$pristine}" class="input-label">Phone</span>
+                <input type="tel" name="phone" pattern="[0-9]*" allow-pattern="[0-9]" placeholder="Numbers Only" ng-model="ctrl.user.phone" required="" minlength="10" maxlength="11"/>
+              </label>
+              <label class="item item-input"><span class="input-label">Company</span>
+                <input type="text" ng-model="ctrl.user.company" placeholder="Optional"/>
+              </label>
+              <ion-item class="item-divider">Profile Information</ion-item>
+              <label class="item item-input"><span ng-class="{&quot;warn&quot;:registerForm.email.$invalid &amp;&amp; !registerForm.email.$pristine}" class="input-label">E-mail</span>
+                <input type="email" name="email" pattern="" placeholder="joe@plumber.com" ng-model="ctrl.user.email" required=""/>
+              </label>
+              <label class="item item-input"><span class="input-label">Password</span>
+                <input type="password" ng-model="ctrl.user.password" placeholder="" required=""/>
+              </label>
+              <label class="item item-input"><span class="input-label">Confirm Password</span>
+                <input type="password" ng-model="ctrl.user.confirm" placeholder="" required=""/>
+              </label>
+            </ion-list>
+          </div>
+          <p>By submitting you are agreeing to the <b ng-click='ctrl.openUserAgreement()'>User Agreement</b> and <b ng-click='ctrl.openRewardAgreement()'>Reward Program Agreement</b></p>
+          <button type="submit" ng-disabled="registerForm.$invalid || !ctrl.address" class="button button-outline button-positive button-block icon-right ion-android-send">Agree & Submit</button>
+        </form>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,17 @@
+
+<ion-view title="Ticket" class="state-ticket">
+  <ion-nav-buttons side="right"><a ui-sref="jobs" class="button button-icon icon ion-close-round"></a></ion-nav-buttons>
+  <ion-content padding="true" class="has-header">
+    <div class="card">
+      <ion-list>
+        <ion-item ng-repeat="job in ctrl.complete" class="item-curbshot"><img ng-src="http://floodteamms.com/{{job.job_picture}}"/></ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item class="item-divider">{{ctrl.job.job_customer}}
+          <h2>{{job.job_refer}}</h2>
+          <p>01/02/14</p><span class="badge badge-calm">$300.00</span>
+        </ion-item>
+      </ion-list>
+    </div>
+  </ion-content>
+</ion-view>

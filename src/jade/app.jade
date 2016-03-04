@@ -1,0 +1,34 @@
+doctype html
+html(lang="en")
+    head
+        title=name
+        link(href="#{css.dir}#{css.file}" rel="stylesheet")
+        include ./favicon.jade
+        meta(charset="utf-8")
+        meta(name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width, minimal-ui")
+        meta(name="mobile-web-app-capable" content="yes")
+        meta(name="apple-mobile-web-app-status-bar-style" content=css.vars.theme.primary)
+        //meta(http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'")
+        if mobile
+            script(src="cordova.js")
+        script(src="js/build.js" async defer)
+    body(ng-app=name)
+        ion-nav-bar.bar-positive.has-tabs-top
+            ion-nav-buttons(side='left')
+                button.button.button-icon.icon.ion-navicon(ng-click="$root.toggleMenu()")
+            ion-nav-buttons(side="right")
+                a.button.button-clear.icon.ion-person(ui-sref='profile({userId:$root.session.user_id})')
+        ion-side-menus
+            ion-side-menu(side="left")
+                ion-content(scroll="false").has-header
+                    .logo
+                        img(src="img/icon.png")
+                        i.icon.ion-power.menu-close(ng-click="$root.logout()")
+                    ion-list
+                        ion-item.item-icon-right.menu-close(ui-sref="home")
+                            i.icon.ion-home
+                            | Home
+                    .branding
+                        img(src='img/madness-labs.png' ng-click="$root.openLink('http://madnesslabs.net')")
+            ion-side-menu-content(drag-content="false")           
+                ion-nav-view

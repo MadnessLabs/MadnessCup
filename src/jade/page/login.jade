@@ -1,0 +1,21 @@
+ion-view.state-login(title='Login' hide-nav-bar="true")
+  ion-content(padding='false', scroll='false')
+    .banner
+      img(src='img/logo.png')
+      .water
+        .waves
+    form(name="loginForm" ng-submit="ctrl.login(loginForm)")
+      .card
+        ion-list
+          label.item.item-input
+            span.input-label E-mail
+            input(type='email' placeholder='' ng-model="ctrl.username" required)
+          label.item.item-input
+            span.input-label Password
+            input(type='password' placeholder='' ng-model="ctrl.password" required)
+      button.button.button-light.button-block.button-outline.icon-right.ion-unlocked(type='submit') Log in
+    a.button.button-clear.button-block.button-light(ui-sref='register') Register Account
+  .footer(ng-hide="$root.keyboardOpen")
+    img.icon(src="img/icon-clear.png")
+    a.branding(href="#" ng-click="$root.openLink('http://www.thefloodteam.com')")
+      img(src='img/flood-team.png')

@@ -1,0 +1,4 @@
+
+<ion-popover-view class="fit">
+  <ion-list><a href="mailto:{{ctrl.job.job_pm_email}}" target="_System" ng-show="ctrl.job.job_pm_email" class="item item-icon-right"><i class="icon ion-email"></i>E-mail Project Manager</a><a href="tel:{{ctrl.job.job_pm_phone}}" target="_System" ng-show="ctrl.job.job_pm_phone" class="item item-icon-right"><i class="icon ion-iphone"></i>Call Project Manager</a><a href="tel:{{ctrl.job.job_phone}}" target="_System" ng-show="ctrl.job.job_phone" class="item item-icon-right"><i class="icon ion-ios-telephone"></i>Call Home Owner</a><a ng-click="$root.openMap(ctrl.job.job_address)" ng-show="ctrl.job.job_address" class="item item-icon-right"><i class="icon ion-map"></i>{{ctrl.job.job_address}}</a></ion-list>
+</ion-popover-view>

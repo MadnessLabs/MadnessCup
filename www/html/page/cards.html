@@ -1,0 +1,47 @@
+
+<ion-view title="Cards" cache-view="false" class="state-cards">
+  <ion-content padding="true" class="has-header">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6"> 
+        <div ontouchstart="this.classList.toggle('hover');" class="flip-container">
+          <div class="flipper">
+            <div class="front"><img src="img/card-front.png"/></div>
+            <div class="back"><img src="img/card-back.png"/></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <form name="registerForm" ng-submit="ctrl.orderCards()"> 
+          <div class="card">
+            <ion-list>
+              <ion-item class="item-divider">Order Information</ion-item>
+              <label class="item item-input"><span class="input-label">Address </span>
+                <input type="text" placeholder="None on file" ng-model="ctrl.cards.address"/>
+              </label>
+              <label class="item item-input"><span class="input-label">Phone </span>
+                <input type="text" placeholder="None on file" ng-model="ctrl.cards.phone"/>
+              </label>
+              <ion-item class="item-input item-select">
+                <div class="input-label">Amount</div>
+                <select required="" ng-model="ctrl.cards.amount">
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                </select>
+              </ion-item>
+              <ion-item class="item-input item-select">
+                <div class="input-label">Method</div>
+                <select required="" ng-model="ctrl.cards.method">
+                  <option value="mail">Standard Mail (5-7 Business Days)</option>
+                  <option value="pickup">Pick-Up at The Flood Team (Same Day)</option>
+                  <option value="dropoff">Arranged Drop-Off (1-2 Days)</option>
+                </select>
+              </ion-item>
+            </ion-list>
+          </div>
+          <button type="submit" class="button button-outline button-positive button-block icon-right ion-android-send">Submit</button>
+        </form>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
