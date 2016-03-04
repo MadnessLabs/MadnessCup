@@ -11242,7 +11242,6 @@ a.item, ion-item[ui-sref], ion-item[ng-click], .button-stable {
 
 .state-round .card {
   padding: 0;
-  background-image: url("../img/stage/final_destination.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center; }
