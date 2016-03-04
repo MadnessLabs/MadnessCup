@@ -1,3 +1,7 @@
 ion-view.state-login(title='Login' hide-nav-bar="true")
-    ion-content(padding='false', scroll='false')
-        button.button.button-light.button-block.button-outline.icon-right.ion-social-facebook(ng-click="ctrl.login()") Facebook Login
+    ion-content(padding='true', scroll='false')
+        .row
+            .col-xs-6
+                button.button.button-light.button-block.button-outline.icon-left.ion-social-google(ng-click="ctrl.loginGoogle()") Google Login
+            .col-xs-6    
+                button.button.button-light.button-block.button-outline.icon-right.ion-social-facebook(ng-click="ctrl.loginFacebook()") Facebook Login

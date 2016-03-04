@@ -12,7 +12,10 @@
                 "plugins",
                 "platforms",
                 "node_modules",
-                "build"
+                "build",
+                "www/js",
+                "www/css",
+                "www/html"
             ]
         }
     ],

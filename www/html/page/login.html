@@ -1,6 +1,13 @@
 
 <ion-view title="Login" hide-nav-bar="true" class="state-login">
-  <ion-content padding="false" scroll="false">
-    <button ng-click="ctrl.login()" class="button button-light button-block button-outline icon-right ion-social-facebook">Facebook Login</button>
+  <ion-content padding="true" scroll="false">
+    <div class="row">
+      <div class="col-xs-6">
+        <button ng-click="ctrl.loginGoogle()" class="button button-light button-block button-outline icon-left ion-social-google">Google Login</button>
+      </div>
+      <div class="col-xs-6">   
+        <button ng-click="ctrl.loginFacebook()" class="button button-light button-block button-outline icon-right ion-social-facebook">Facebook Login</button>
+      </div>
+    </div>
   </ion-content>
 </ion-view>
