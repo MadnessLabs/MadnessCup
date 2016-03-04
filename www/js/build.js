@@ -69307,7 +69307,19 @@ var MadnessCup;
             $stateProvider
                 .state('login', { 'url': '/login',
                 'templateUrl': 'html/page/login.html',
-                'controller': 'MadnessCup.LoginController as ctrl' });
+                'controller': 'MadnessCup.LoginController as ctrl' })
+                .state('round', { 'url': '/round',
+                'templateUrl': 'html/page/round.html',
+                'controller': 'MadnessCup.RoundController as ctrl' })
+                .state('admin', { 'url': '/admin',
+                'templateUrl': 'html/page/admin.html',
+                'controller': 'MadnessCup.AdminController as ctrl' })
+                .state('home', { 'url': '/home',
+                'templateUrl': 'html/page/home.html',
+                'controller': 'MadnessCup.HomeController as ctrl' })
+                .state('tournament', { 'url': '/tournament',
+                'templateUrl': 'html/page/tournament.html',
+                'controller': 'MadnessCup.TournamentController as ctrl' });
             $urlRouterProvider.otherwise(function ($injector, $location) {
                 var $state = $injector.get('$state');
                 $state.go('login');
@@ -69320,7 +69332,35 @@ var MadnessCup;
 })(MadnessCup || (MadnessCup = {}));
 
 angular.module('MadnessCup.config', [])
-.constant('enjin', {"name":"MadnessCup","description":"A tournament bracket app","author":{"name":"Madness Labs","email":"info@MadnessLabs.net","url":"http://MadnessLabs.net"},"root":"www/","templates":"templates/","mobile":true,"local":false,"debug":false,"url":"http://MadnessCup.net","version":"0.0.1","routes":[{"state":"login","url":"/login","templateUrl":"html/page/login.html","controller":"MadnessCup.LoginController as ctrl"}],"plugins":["ionic","ngCordova","firebase","ng-mfb","relativeDate"],"db":{"firebase":{"host":"https://madnesscup.firebaseio.com/"}},"html":{"dir":"html/","file":"index.html","srcDir":"src/jade/","srcFile":"app.jade","watch":["src/jade/**/*.jade","!src/jade/favicon.jade","!src/jade/app.jade"]},"css":{"dir":"css/","file":"build.css","srcDir":"src/scss/","vars":{"theme":{"primary":"#196EAF","secondary":"#17A05E","warning":"#ef473a","dark-gray":"#666666","light-gray":"#BDBDBD"},"light":"#ffffff !default","stable":"#f8f8f8 !default","positive":"$theme-primary !default","calm":"$theme-secondary !default","balanced":"#33cd5f !default","energized":"#ffc900 !default","assertive":"$theme-warning !default","royal":"#886aea !default","dark":"#444444 !default","ionicons-font-path":"'../fonts' !default","screen":{"xl":"1500px","lg":"1200px","md":"992px","sm":"768px","xs":"480px"},"grid":{"responsive":{"sm-break":"$screen-sm","md-break":"$screen-md","lg-break":"$screen-lg"}},"main-color":"$theme-primary !default","icons-font-size":"24px !default"},"libraries":["bower_components/ionic/scss/ionic.scss","bower_components/ng-material-floating-button/mfb/src/mfb.scss"],"build":["build/css/libraries.css","bower_components/flexboxgrid/dist/flexboxgrid.css","build/css/layout/**/*.css","build/css/page/**/*.css","build/css/modal/**/*.css"],"watch":["src/scss/**/*.scss","!src/scss/libraries.scss","!src/scss/_variables.scss"]},"js":{"dir":"js/","file":"build.js","srcDir":"src/ts/","libraries":["bower_components/ionic/release/js/ionic.bundle.js","bower_components/ngCordova/dist/ng-cordova.js","bower_components/firebase/firebase.js","bower_components/angularfire/dist/angularfire.js","bower_components/ng-material-floating-button/src/mfb-directive.js","bower_components/angular-relative-date/angular-relative-date.js"],"build":["build/js/app.js","build/js/run.js","build/js/router.js","build/js/config.js","build/js/controller/**/*.js","build/js/factory/**/*.js","build/js/filter/**/*.js","build/js/directive/**/*.js","build/js/service/**/*.js"],"watch":["src/ts/**/*.ts"]},"font":{"dir":"fonts/","watch":["bower_components/ionic/release/fonts/**"]},"img":{"dir":"img/","favicon":"resources/icon.png","watch":["resources/**"]}});
+.constant('enjin', {"name":"MadnessCup","description":"A tournament bracket app","author":{"name":"Madness Labs","email":"info@MadnessLabs.net","url":"http://MadnessLabs.net"},"root":"www/","templates":"templates/","mobile":true,"local":false,"debug":false,"url":"http://MadnessCup.net","version":"0.0.1","routes":[{"state":"login","url":"/login","templateUrl":"html/page/login.html","controller":"MadnessCup.LoginController as ctrl"},{"state":"round","url":"/round","templateUrl":"html/page/round.html","controller":"MadnessCup.RoundController as ctrl"},{"state":"admin","url":"/admin","templateUrl":"html/page/admin.html","controller":"MadnessCup.AdminController as ctrl"},{"state":"home","url":"/home","templateUrl":"html/page/home.html","controller":"MadnessCup.HomeController as ctrl"},{"state":"tournament","url":"/tournament","templateUrl":"html/page/tournament.html","controller":"MadnessCup.TournamentController as ctrl"}],"plugins":["ionic","ngCordova","firebase","ng-mfb","relativeDate"],"db":{"firebase":{"host":"https://madnesscup.firebaseio.com/"}},"html":{"dir":"html/","file":"index.html","srcDir":"src/jade/","srcFile":"app.jade","watch":["src/jade/**/*.jade","!src/jade/favicon.jade","!src/jade/app.jade"]},"css":{"dir":"css/","file":"build.css","srcDir":"src/scss/","vars":{"theme":{"primary":"#196EAF","secondary":"#17A05E","warning":"#ef473a","dark-gray":"#666666","light-gray":"#BDBDBD"},"light":"#ffffff !default","stable":"#f8f8f8 !default","positive":"$theme-primary !default","calm":"$theme-secondary !default","balanced":"#33cd5f !default","energized":"#ffc900 !default","assertive":"$theme-warning !default","royal":"#886aea !default","dark":"#444444 !default","ionicons-font-path":"'../fonts' !default","screen":{"xl":"1500px","lg":"1200px","md":"992px","sm":"768px","xs":"480px"},"grid":{"responsive":{"sm-break":"$screen-sm","md-break":"$screen-md","lg-break":"$screen-lg"}},"main-color":"$theme-primary !default","icons-font-size":"24px !default"},"libraries":["bower_components/ionic/scss/ionic.scss","bower_components/ng-material-floating-button/mfb/src/mfb.scss"],"build":["build/css/libraries.css","bower_components/flexboxgrid/dist/flexboxgrid.css","build/css/layout/**/*.css","build/css/page/**/*.css","build/css/modal/**/*.css"],"watch":["src/scss/**/*.scss","!src/scss/libraries.scss","!src/scss/_variables.scss"]},"js":{"dir":"js/","file":"build.js","srcDir":"src/ts/","libraries":["bower_components/ionic/release/js/ionic.bundle.js","bower_components/ngCordova/dist/ng-cordova.js","bower_components/firebase/firebase.js","bower_components/angularfire/dist/angularfire.js","bower_components/ng-material-floating-button/src/mfb-directive.js","bower_components/angular-relative-date/angular-relative-date.js"],"build":["build/js/app.js","build/js/run.js","build/js/router.js","build/js/config.js","build/js/controller/**/*.js","build/js/factory/**/*.js","build/js/filter/**/*.js","build/js/directive/**/*.js","build/js/service/**/*.js"],"watch":["src/ts/**/*.ts"]},"font":{"dir":"fonts/","watch":["bower_components/ionic/release/fonts/**"]},"img":{"dir":"img/","favicon":"resources/icon.png","process":[{"folder":"character","width":800,"crop":false},{"folder":"stage","width":1920,"crop":false},{"folder":"splash","width":1920,"crop":false},{"folder":"logo","width":1024,"crop":false}],"watch":["resources/**"]}});
+
+/// <reference path="../../tsd/tsd.d.ts"/>
+var MadnessCup;
+(function (MadnessCup) {
+    'use strict';
+    var AdminController = (function () {
+        function AdminController() {
+            // ON LOAD       
+        }
+        return AdminController;
+    }());
+    angular.module('MadnessCup')
+        .controller('MadnessCup.AdminController', AdminController);
+})(MadnessCup || (MadnessCup = {}));
+
+/// <reference path="../../tsd/tsd.d.ts"/>
+var MadnessCup;
+(function (MadnessCup) {
+    'use strict';
+    var HomeController = (function () {
+        function HomeController() {
+            // ON LOAD       
+        }
+        return HomeController;
+    }());
+    angular.module('MadnessCup')
+        .controller('MadnessCup.HomeController', HomeController);
+})(MadnessCup || (MadnessCup = {}));
 
 /// <reference path="../../tsd/tsd.d.ts"/>
 var MadnessCup;
@@ -69349,26 +69389,32 @@ var MadnessCup;
 })(MadnessCup || (MadnessCup = {}));
 
 /// <reference path="../../tsd/tsd.d.ts"/>
-angular.module('MadnessCup').directive('setBackground', function (FallBackground) {
-    return {
-        restrict: 'EA',
-        scope: {
-            host: '=',
-            image: '=',
-            fallback: '='
-        },
-        link: function ($scope, element, attrs) {
-            element[0].style.backgroundImage = 'url(' + $scope.fallback + ')';
-            var url = false;
-            if ($scope.image && $scope.host) {
-                url = $scope.host + $scope.image;
-            }
-            FallBackground.get(url, $scope.fallback, function (background) {
-                element[0].style.backgroundImage = background['background-image'];
-            });
+var MadnessCup;
+(function (MadnessCup) {
+    'use strict';
+    var RoundController = (function () {
+        function RoundController() {
+            // ON LOAD       
         }
-    };
-});
+        return RoundController;
+    }());
+    angular.module('MadnessCup')
+        .controller('MadnessCup.RoundController', RoundController);
+})(MadnessCup || (MadnessCup = {}));
+
+/// <reference path="../../tsd/tsd.d.ts"/>
+var MadnessCup;
+(function (MadnessCup) {
+    'use strict';
+    var TournamentController = (function () {
+        function TournamentController() {
+            // ON LOAD       
+        }
+        return TournamentController;
+    }());
+    angular.module('MadnessCup')
+        .controller('MadnessCup.TournamentController', TournamentController);
+})(MadnessCup || (MadnessCup = {}));
 
 /// <reference path="../../tsd/tsd.d.ts"/>
 angular.module('MadnessCup').directive('allowPattern', function () {
@@ -69387,6 +69433,28 @@ angular.module('MadnessCup').directive('allowPattern', function () {
                     }
                 });
             };
+        }
+    };
+});
+
+/// <reference path="../../tsd/tsd.d.ts"/>
+angular.module('MadnessCup').directive('setBackground', function (FallBackground) {
+    return {
+        restrict: 'EA',
+        scope: {
+            host: '=',
+            image: '=',
+            fallback: '='
+        },
+        link: function ($scope, element, attrs) {
+            element[0].style.backgroundImage = 'url(' + $scope.fallback + ')';
+            var url = false;
+            if ($scope.image && $scope.host) {
+                url = $scope.host + $scope.image;
+            }
+            FallBackground.get(url, $scope.fallback, function (background) {
+                element[0].style.backgroundImage = background['background-image'];
+            });
         }
     };
 });

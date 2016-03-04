@@ -11141,6 +11141,8 @@ a.item, ion-item[ui-sref], ion-item[ng-click], .button-stable {
 .modal.active {
   height: 250px; }
 
+
+
 @keyframes slide {
   from {
     background-position: 0 0; }
@@ -11237,3 +11239,5 @@ a.item, ion-item[ui-sref], ion-item[ng-click], .button-stable {
     border-radius: 100%;
     display: block;
     margin: 0 auto; }
+
+
