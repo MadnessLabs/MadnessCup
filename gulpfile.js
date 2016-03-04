@@ -30,7 +30,10 @@ var addsrc       = require('gulp-add-src'),
     ts           = require('gulp-typescript'),
     tsd          = require('gulp-tsd'),
     tslint       = require('gulp-tslint'),
-    uglify       = require('gulp-uglify');
+    uglify       = require('gulp-uglify'),
+    imageresize  = require('gulp-image-resize'),
+    imagemin     = require('gulp-imagemin'),
+    pngquant     = require('imagemin-pngquant');
 
 
  /////////////////////////////////////
@@ -168,6 +171,8 @@ function setVars() {
     htmlWatch    = configJSON.html.watch;
     // IMG
     iconDir      = 'icon/';
+    imgSrcDir    = './resources/',
+    imgProccess  = configJSON.img.process;
     imgDir       = appDir+configJSON.img.dir;
     imgIconDir   = imgDir+iconDir;
     imgWatch     = configJSON.img.watch;
@@ -696,6 +701,45 @@ gulp.task('html-template', function(){
         .on('end', function(){
             if(global.isWatching){ browserSync.reload(); }
         });
+});
+
+gulp.task('images', function () {
+ 
+    // loop through image groups        
+    imgProccess.forEach(function(type){
+        
+        // build the resize object
+        var resize_settings = {
+            width: type.width,
+            crop: type.crop,
+            // never increase image dimensions
+            upscale : false
+        }
+        // only specify the height if it exists
+        if (type.hasOwnProperty("height")) {
+            resize_settings.height = type.height
+        }
+        
+        gulp
+        
+        // grab all images from the folder
+        .src(imgSrcDir+type.folder+'/**/*')
+    
+        // resize them according to the width/height settings
+        .pipe(imageresize(resize_settings))
+        
+        // optimize the images
+        .pipe(imagemin({
+            progressive: true,
+            // set this if you are using svg images
+            svgoPlugins: [{removeViewBox: false}],
+            use: [pngquant()]
+        }))
+        
+        // output each image to the dest path
+        // maintaining the folder structure
+        .pipe(gulp.dest(imgDir+type.folder));
+    });
 });
 
 gulp.task('js-app', function(){
