@@ -69238,7 +69238,7 @@ var MadnessCup;
 (function (MadnessCup) {
     'use strict';
     var AppRunner = (function () {
-        function AppRunner($ionicPlatform, $cordovaKeyboard, $cordovaSplashscreen, Auth, $rootScope, enjin, $state, $ionicLoading, $ionicSideMenuDelegate, $window, $cordovaInAppBrowser, $http) {
+        function AppRunner($ionicPlatform, $cordovaKeyboard, $cordovaSplashscreen, $rootScope, enjin, $state, $ionicLoading, $ionicSideMenuDelegate, $window, $cordovaInAppBrowser, $http) {
             $ionicPlatform.ready(function () {
                 if (window.cordova && window.cordova.plugins.Keyboard) {
                     cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -69251,13 +69251,6 @@ var MadnessCup;
                         $rootScope.keyboardOpen = value;
                     });
                 }
-                $rootScope.host = {
-                    api: enjin.db.api.host.slice(0, -3),
-                    url: enjin.url
-                };
-                $rootScope.logout = function () {
-                    Auth.logout();
-                };
                 $rootScope.openMap = function (marker) {
                     var text = encodeURIComponent(marker);
                     if (window.cordova) {
@@ -69327,32 +69320,28 @@ var MadnessCup;
 })(MadnessCup || (MadnessCup = {}));
 
 angular.module('MadnessCup.config', [])
-.constant('enjin', {"name":"MadnessCup","description":"A tournament bracket app","author":{"name":"Madness Labs","email":"info@MadnessLabs.net","url":"http://MadnessLabs.net"},"root":"www/","templates":"templates/","mobile":true,"local":false,"debug":false,"url":"http://MadnessCup.net","version":"0.0.1","routes":[{"state":"login","url":"/login","templateUrl":"html/page/login.html","controller":"MadnessCup.LoginController as ctrl"}],"plugins":["ionic","ngCordova","firebase","ng-mfb","relativeDate"],"db":{"firebase":{"host":""},"api":{"host":"http://api.madnesscup.net/v1/"}},"html":{"dir":"html/","file":"index.html","srcDir":"src/jade/","srcFile":"app.jade","watch":["src/jade/**/*.jade","!src/jade/favicon.jade","!src/jade/app.jade"]},"css":{"dir":"css/","file":"build.css","srcDir":"src/scss/","vars":{"theme":{"primary":"#196EAF","secondary":"#17A05E","warning":"#ef473a","dark-gray":"#666666","light-gray":"#BDBDBD"},"light":"#ffffff !default","stable":"#f8f8f8 !default","positive":"$theme-primary !default","calm":"$theme-secondary !default","balanced":"#33cd5f !default","energized":"#ffc900 !default","assertive":"$theme-warning !default","royal":"#886aea !default","dark":"#444444 !default","ionicons-font-path":"'../fonts' !default","screen":{"xl":"1500px","lg":"1200px","md":"992px","sm":"768px","xs":"480px"},"grid":{"responsive":{"sm-break":"$screen-sm","md-break":"$screen-md","lg-break":"$screen-lg"}},"main-color":"$theme-primary !default","icons-font-size":"24px !default"},"libraries":["bower_components/ionic/scss/ionic.scss","bower_components/ng-material-floating-button/mfb/src/mfb.scss"],"build":["build/css/libraries.css","bower_components/flexboxgrid/dist/flexboxgrid.css","build/css/layout/**/*.css","build/css/page/**/*.css","build/css/modal/**/*.css"],"watch":["src/scss/**/*.scss","!src/scss/libraries.scss","!src/scss/_variables.scss"]},"js":{"dir":"js/","file":"build.js","srcDir":"src/ts/","libraries":["bower_components/ionic/release/js/ionic.bundle.js","bower_components/ngCordova/dist/ng-cordova.js","bower_components/firebase/firebase.js","bower_components/angularfire/dist/angularfire.js","bower_components/ng-material-floating-button/src/mfb-directive.js","bower_components/angular-relative-date/angular-relative-date.js"],"build":["build/js/app.js","build/js/run.js","build/js/router.js","build/js/config.js","build/js/controller/**/*.js","build/js/factory/**/*.js","build/js/filter/**/*.js","build/js/directive/**/*.js","build/js/service/**/*.js"],"watch":["src/ts/**/*.ts"]},"font":{"dir":"fonts/","watch":["bower_components/ionic/release/fonts/**"]},"img":{"dir":"img/","favicon":"resources/icon.png","watch":["resources/**"]}});
+.constant('enjin', {"name":"MadnessCup","description":"A tournament bracket app","author":{"name":"Madness Labs","email":"info@MadnessLabs.net","url":"http://MadnessLabs.net"},"root":"www/","templates":"templates/","mobile":true,"local":false,"debug":false,"url":"http://MadnessCup.net","version":"0.0.1","routes":[{"state":"login","url":"/login","templateUrl":"html/page/login.html","controller":"MadnessCup.LoginController as ctrl"}],"plugins":["ionic","ngCordova","firebase","ng-mfb","relativeDate"],"db":{"firebase":{"host":"https://madnesscup.firebaseio.com/"}},"html":{"dir":"html/","file":"index.html","srcDir":"src/jade/","srcFile":"app.jade","watch":["src/jade/**/*.jade","!src/jade/favicon.jade","!src/jade/app.jade"]},"css":{"dir":"css/","file":"build.css","srcDir":"src/scss/","vars":{"theme":{"primary":"#196EAF","secondary":"#17A05E","warning":"#ef473a","dark-gray":"#666666","light-gray":"#BDBDBD"},"light":"#ffffff !default","stable":"#f8f8f8 !default","positive":"$theme-primary !default","calm":"$theme-secondary !default","balanced":"#33cd5f !default","energized":"#ffc900 !default","assertive":"$theme-warning !default","royal":"#886aea !default","dark":"#444444 !default","ionicons-font-path":"'../fonts' !default","screen":{"xl":"1500px","lg":"1200px","md":"992px","sm":"768px","xs":"480px"},"grid":{"responsive":{"sm-break":"$screen-sm","md-break":"$screen-md","lg-break":"$screen-lg"}},"main-color":"$theme-primary !default","icons-font-size":"24px !default"},"libraries":["bower_components/ionic/scss/ionic.scss","bower_components/ng-material-floating-button/mfb/src/mfb.scss"],"build":["build/css/libraries.css","bower_components/flexboxgrid/dist/flexboxgrid.css","build/css/layout/**/*.css","build/css/page/**/*.css","build/css/modal/**/*.css"],"watch":["src/scss/**/*.scss","!src/scss/libraries.scss","!src/scss/_variables.scss"]},"js":{"dir":"js/","file":"build.js","srcDir":"src/ts/","libraries":["bower_components/ionic/release/js/ionic.bundle.js","bower_components/ngCordova/dist/ng-cordova.js","bower_components/firebase/firebase.js","bower_components/angularfire/dist/angularfire.js","bower_components/ng-material-floating-button/src/mfb-directive.js","bower_components/angular-relative-date/angular-relative-date.js"],"build":["build/js/app.js","build/js/run.js","build/js/router.js","build/js/config.js","build/js/controller/**/*.js","build/js/factory/**/*.js","build/js/filter/**/*.js","build/js/directive/**/*.js","build/js/service/**/*.js"],"watch":["src/ts/**/*.ts"]},"font":{"dir":"fonts/","watch":["bower_components/ionic/release/fonts/**"]},"img":{"dir":"img/","favicon":"resources/icon.png","watch":["resources/**"]}});
 
 /// <reference path="../../tsd/tsd.d.ts"/>
 var MadnessCup;
 (function (MadnessCup) {
     'use strict';
     var LoginController = (function () {
-        function LoginController(Auth, $state, enjin) {
-            this.Auth = Auth;
+        function LoginController($state, enjin) {
             this.$state = $state;
             this.enjin = enjin;
             //On Load
         }
-        LoginController.prototype.login = function (form) {
-            var ctrl = this;
-            if (form.$valid) {
-                this.Auth.login(this.enjin.db.api.host + 'login', {
-                    username: this.username,
-                    password: this.password
-                }, function (res) {
-                    this.$state.go('jobs');
-                }.bind(this));
-            }
-            else {
-                alert('Please enter in a valid E-mail and password.');
-            }
+        LoginController.prototype.login = function () {
+            var ref = new Firebase(this.enjin.db.firebase.host);
+            ref.authWithOAuthPopup('facebook', function (error, authData) {
+                if (error) {
+                    console.log('Login Failed!', error);
+                }
+                else {
+                    console.log('Authenticated successfully with payload:', authData);
+                }
+            });
         };
         return LoginController;
     }());
@@ -69401,79 +69390,6 @@ angular.module('MadnessCup').directive('setBackground', function (FallBackground
         }
     };
 });
-
-/// <reference path="../../tsd/tsd.d.ts"/>
-var MadnessCup;
-(function (MadnessCup) {
-    var AuthService = (function () {
-        function AuthService(enjin, $state, $rootScope, Rest, $ionicHistory) {
-            this.enjin = enjin;
-            this.$state = $state;
-            this.$rootScope = $rootScope;
-            this.Rest = Rest;
-            this.$ionicHistory = $ionicHistory;
-            this.setSession();
-            $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-                this.check(event, toState, toParams, fromState, fromParams);
-            }.bind(this));
-        }
-        AuthService.prototype.setSession = function () {
-            if (!this.enjin.session && localStorage.getItem('enjin_session')) {
-                this.enjin.session = this.$rootScope.session = JSON.parse(localStorage.getItem('enjin_session'));
-                this.Rest.get(this.enjin.db.api.host + 'user/' + this.enjin.session.user_id, false, true).then(function (res) {
-                    this.update(res.data);
-                }.bind(this));
-            }
-        };
-        AuthService.prototype.check = function (event, toState, toParams, fromState, fromParams) {
-            if (toState && toState.name !== fromState.name) {
-                if (toState.name === 'login') {
-                    if (this.enjin.session) {
-                        event.preventDefault();
-                        this.$state.go('jobs');
-                    }
-                }
-                else {
-                    if (!this.enjin.session && toState.name !== 'register') {
-                        event.preventDefault();
-                        this.$state.go('login');
-                    }
-                }
-            }
-        };
-        AuthService.prototype.login = function (url, params, callback) {
-            this.Rest.post(url, params).then(function (res) {
-                if (res.success === true) {
-                    this.update(res.data);
-                    if (typeof callback === 'function') {
-                        callback(res);
-                    }
-                    else {
-                        console.log('Third parameter must be a callback function!');
-                    }
-                }
-                else {
-                    alert(res.data);
-                }
-            }.bind(this));
-        };
-        AuthService.prototype.logout = function () {
-            if (confirm('Are you sure you wish to log out?')) {
-                delete this.enjin.session;
-                delete this.$rootScope.session;
-                localStorage.clear();
-                this.$state.go('login');
-            }
-        };
-        AuthService.prototype.update = function (user) {
-            this.enjin.session = this.$rootScope.session = user;
-            localStorage.setItem('enjin_session', JSON.stringify(this.enjin.session));
-            this.$ionicHistory.clearCache();
-        };
-        return AuthService;
-    }());
-    angular.module('MadnessCup').service('Auth', AuthService);
-})(MadnessCup || (MadnessCup = {}));
 
 /// <reference path="../../tsd/tsd.d.ts"/>
 var MadnessCup;

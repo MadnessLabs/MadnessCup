@@ -28,10 +28,7 @@
     ],
     "db": {
         "firebase": {
-            "host": ""
-        },
-        "api": {
-            "host": "http://api.madnesscup.net/v1/"
+            "host": "https://madnesscup.firebaseio.com/"
         }
     },
     "html": {

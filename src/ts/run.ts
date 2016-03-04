@@ -10,7 +10,6 @@ module MadnessCup {
             $ionicPlatform, 
             $cordovaKeyboard, 
             $cordovaSplashscreen, 
-            Auth, 
             $rootScope, 
             enjin, 
             $state, 
@@ -35,15 +34,6 @@ module MadnessCup {
                         $rootScope.keyboardOpen = value;
                     });
                 }
-
-                $rootScope.host = {
-                    api: enjin.db.api.host.slice(0, -3),
-                    url: enjin.url
-                };
-
-                $rootScope.logout = function() {
-                    Auth.logout();
-                };
 
                 $rootScope.openMap = function(marker) {
                     var text = encodeURIComponent(marker);
