@@ -22,4 +22,14 @@
     @media (max-width: $screen-xs) {
 
     }
+    .card{
+        img{
+            //background-image: ;
+        }
+        .stage{
+            font-weight: bold;
+            text-align: center;
+            font-size: 25px;
+        }
+    }
 }
