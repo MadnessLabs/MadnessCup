@@ -1,15 +1,14 @@
 ion-view(view-title='Round')
     ion-content(class='state-round')
-        .card.stage-image 
+        .card
             .row 
-                .col-xs-4
-                    div.playerOne
-                        img(src="#")
-                        h3.playerName Bobby
-                .col-xs-4
-                    div VS
-                .col-xs-4
-                    div.playerTwo
-                        img(src="#")
-                        h3.playerName Emmy
-            .item.stage Final Destination
+                .col-xs-5.playerOne
+                    .character(ng-style='{"background-image": "url(img/character/cloud.png)"}')
+                    h3.playerName Bobby
+                .col-xs-2 VS
+                .col-xs-5.playerTwo
+                    .character(ng-style='{"background-image": "url(img/character/bayonetta.png)"}')
+                    h3.playerName Emmy
+            .item 
+                h2 Final Destination
+                span.badge 2 / 1

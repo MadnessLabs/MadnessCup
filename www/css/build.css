@@ -11240,8 +11240,42 @@ a.item, ion-item[ui-sref], ion-item[ng-click], .button-stable {
     display: block;
     margin: 0 auto; }
 
-.state-round .card .stage {
-  font-weight: bold;
-  text-align: center;
-  font-size: 25px; }
+.state-round .card {
+  padding: 0;
+  background-image: url("../img/stage/final_destination.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center; }
+  .state-round .card .row {
+    height: 300px;
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.4); }
+    .state-round .card .row .col-xs-5 {
+      text-align: center;
+      padding-top: 75px; }
+      .state-round .card .row .col-xs-5 .character {
+        display: block;
+        margin: 0 auto;
+        height: 100px;
+        width: 100px;
+        background-color: white;
+        border-radius: 100%;
+        border: 2px solid #666;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-origin: content-box;
+        padding: 10px; }
+      .state-round .card .row .col-xs-5 h3 {
+        color: #fff; }
+    .state-round .card .row .col-xs-2 {
+      color: #fff;
+      font-size: 15px;
+      text-align: center;
+      padding-top: 135px; }
+  .state-round .card .item h2 {
+    font-weight: bold;
+    font-size: 16px;
+    color: #666;
+    letter-spacing: 3px; }
 

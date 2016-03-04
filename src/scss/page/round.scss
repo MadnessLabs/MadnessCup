@@ -22,11 +22,51 @@
     @media (max-width: $screen-xs) {
 
     }
-    .card{ 
-        .stage{
-            font-weight: bold;
-            text-align: center;
-            font-size: 25px;
+    .card{
+        padding:0;
+        background-image: url("../img/stage/final_destination.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        .row{
+            height: 300px;
+            margin:0;
+            background-color: rgba(0,0,0,0.4);
+            .col-xs-5{
+                text-align: center;
+                padding-top: 75px;
+                .character{
+                    display: block;
+                    margin: 0 auto;
+                    height: 100px;
+                    width: 100px;
+                    background-color: white;
+                    border-radius: 100%;
+                    border: 2px solid #666;
+                    background-position: center;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-origin: content-box;
+                    padding: 10px;
+                }
+                h3{
+                    color: #fff;
+                }
+            }
+            .col-xs-2{
+                color: #fff;
+                font-size: 15px;
+                text-align: center;
+                padding-top: 135px;
+            }
+        }
+        .item{
+            h2{
+                font-weight: bold;
+                font-size: 16px;
+                color: #666;
+                letter-spacing: 3px;
+            }
         }
     }
 }
