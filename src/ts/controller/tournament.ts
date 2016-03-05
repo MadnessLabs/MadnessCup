@@ -10,7 +10,8 @@ module MadnessCup {
             $stateParams,
             enjin,
             $firebaseObject,
-            protected $scope
+            protected $scope,
+            protected $state
         ) {
             // ON LOAD
             this.tournamentRef = new Firebase(enjin.db.firebase.host + 'tournament/' + $stateParams.id);
@@ -22,18 +23,22 @@ module MadnessCup {
         }
 
         addPlayer(player) {
-            console.log(this.tournament);
             if (typeof this.tournament.players === 'undefined') {
                 this.tournament.players = [];
             }
             if (typeof this.tournament.players[player.id] === 'undefined') {
                 this.tournament.players[player.id] = player;
                 this.tournamentRef.child('players').set(this.tournament.players, function() {
-                    alert('You have been added!');
+                    console.log('Welcome to the Tourney!');
                 });
-            } else {
-                alert('You are already added!');
             }
+
+            var unwatch = this.tournament.$watch(function() {
+                if (this.tournament.started) {
+                    this.$state.go('round', {id: this.tournament.$id, round: 1});
+                    unwatch();
+                }
+            }.bind(this));
         }
 
         removePlayer() {

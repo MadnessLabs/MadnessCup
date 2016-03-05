@@ -20,7 +20,7 @@
         "controller": "MadnessCup.LoginController as ctrl"
     }, {
         "state": "round",
-        "url": "/round",
+        "url": "/tournament/:id/round/:round",
         "templateUrl": "html/page/round.html",
         "controller": "MadnessCup.RoundController as ctrl"
     }, {

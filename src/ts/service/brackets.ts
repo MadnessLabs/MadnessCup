@@ -1,9 +1,9 @@
 /// <reference path="../../tsd/angularjs/angular.d.ts"/>
 
 module MadnessCup {
-	class TournamentService {
+	class BracketsService {
 
-		constructor(protected $http: any, protected $q: any, protected $httpParamSerializer, protected $rootScope) {
+		constructor() {
             // On Load
 		}
 
@@ -20,7 +20,7 @@ module MadnessCup {
             return array;
         }
 
-        makeBrackets(players) {
+        setup(players) {
             players = this.shuffle(players);
             var matches = [];
 
@@ -44,5 +44,5 @@ module MadnessCup {
         }
 	}
 
-	angular.module('MadnessCup').service('Tournament', TournamentService);
+	angular.module('MadnessCup').service('Brackets', BracketsService);
 }

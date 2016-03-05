@@ -6,6 +6,8 @@ ion-view(view-title='Admin')
                     h2 {{tournament.name}} {{tournament.number}}
                     span.badge {{tournament.date}}
                     p(ng-bind-html="tournament.rules")
+                ion-item(ng-hide="tournament.started")
+                    button.button.button-clear.button-block.icon-right.ion-arrow-right-b(ng-click="ctrl.startTournament($index)") Start Tournament
         form.card(name="tournamentForm" ng-submit="ctrl.addTournament()" novalidate="")
             ion-list(ng-show="ctrl.formOpen")
                 ion-item.item-divider Tournament Info

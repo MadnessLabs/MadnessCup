@@ -1,29 +1,16 @@
-ion-view(view-title='Round')
+ion-view
+    ion-nav-title {{ctrl.tournament.name}}: Round {{ctrl.round}}
     ion-content(class='state-round')
-        .row.main-grid
+        .row.main-grid(ng-repeat="versus in ctrl.tournament.rounds[ctrl.round - 1]")
             .col-xs-12.col-sm-6.col-lg-4
-                .card(ng-style='{"background-image": "url(img/stage/final_destination.jpg)"}')
+                .card(ng-style='ctrl.selectedStageBackground($index)')
                     .row 
                         .col-xs-5.playerOne
-                            .character(ng-style='{"background-image": "url(img/character/cloud.png)"}')
-                            h3.playerName Bobby
-                        .col-xs-2 VS
+                            .character(ng-style='ctrl.playerAvatar(versus.p1.avatar)')
+                            h3.playerName {{versus.p1.name_first}}
+                        .col-xs-2  - VS - 
                         .col-xs-5.playerTwo
-                            .character(ng-style='{"background-image": "url(img/character/bayonetta.png)"}')
-                            h3.playerName Emmy
+                            .character(ng-style='ctrl.playerAvatar(versus.p2.avatar)')
+                            h3.playerName {{versus.p2.name_first}}
                     .item 
-                        h2 Final Destination
-                        span.badge 2 / 1
-            .col-xs-12.col-sm-6.col-lg-4
-                .card(ng-style='{"background-image": "url(img/stage/final_destination.jpg)"}')
-                    .row 
-                        .col-xs-5.playerOne
-                            .character(ng-style='{"background-image": "url(img/character/cloud.png)"}')
-                            h3.playerName Bobby
-                        .col-xs-2 VS
-                        .col-xs-5.playerTwo
-                            .character(ng-style='{"background-image": "url(img/character/bayonetta.png)"}')
-                            h3.playerName Emmy
-                    .item 
-                        h2 Final Destination
-                        span.badge 2 / 1
+                        h2 {{ctrl.selectedStage($index)}}

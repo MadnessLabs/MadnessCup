@@ -8,7 +8,7 @@ module MadnessCup {
                 .state('login', {'url':'/login', 
 'templateUrl':'html/page/login.html', 
 'controller':'MadnessCup.LoginController as ctrl'})
-				.state('round', {'url':'/round', 
+				.state('round', {'url':'/tournament/:id/round/:round', 
 'templateUrl':'html/page/round.html', 
 'controller':'MadnessCup.RoundController as ctrl'})
 				.state('admin', {'url':'/admin', 

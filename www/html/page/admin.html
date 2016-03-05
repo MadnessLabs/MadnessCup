@@ -7,6 +7,9 @@
           <h2>{{tournament.name}} {{tournament.number}}</h2><span class="badge">{{tournament.date}}</span>
           <p ng-bind-html="tournament.rules"></p>
         </ion-item>
+        <ion-item ng-hide="tournament.started">
+          <button ng-click="ctrl.startTournament($index)" class="button button-clear button-block icon-right ion-arrow-right-b">Start Tournament</button>
+        </ion-item>
       </ion-list>
     </div>
     <form name="tournamentForm" ng-submit="ctrl.addTournament()" novalidate="" class="card">

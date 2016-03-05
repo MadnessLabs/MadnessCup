@@ -3,6 +3,6 @@ ion-popover-view.fit
         a.item.item-icon-left(ng-click="ctrl.rules()")
             i.icon.ion-help-circled
             | View Rules
-        a.item.item-icon-left(ng-click="ctrl.closeMenu()" ui-sref="tournament({id:ctrl.tournament.$id})")
+        a.item.item-icon-left(ng-click="ctrl.closeMenu()" ui-sref="tournament({id:ctrl.tournament.$id})" ng-hide="ctrl.tournament.started")
             i.icon.ion-android-people
             | Join Lobby

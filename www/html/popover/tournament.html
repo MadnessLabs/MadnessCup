@@ -1,4 +1,4 @@
 
 <ion-popover-view class="fit">
-  <ion-list><a ng-click="ctrl.rules()" class="item item-icon-left"><i class="icon ion-help-circled"></i>View Rules</a><a ng-click="ctrl.closeMenu()" ui-sref="tournament({id:ctrl.tournament.$id})" class="item item-icon-left"><i class="icon ion-android-people"></i>Join Lobby</a></ion-list>
+  <ion-list><a ng-click="ctrl.rules()" class="item item-icon-left"><i class="icon ion-help-circled"></i>View Rules</a><a ng-click="ctrl.closeMenu()" ui-sref="tournament({id:ctrl.tournament.$id})" ng-hide="ctrl.tournament.started" class="item item-icon-left"><i class="icon ion-android-people"></i>Join Lobby</a></ion-list>
 </ion-popover-view>

@@ -69294,7 +69294,7 @@ var MadnessCup;
                 .state('login', { 'url': '/login',
                 'templateUrl': 'html/page/login.html',
                 'controller': 'MadnessCup.LoginController as ctrl' })
-                .state('round', { 'url': '/round',
+                .state('round', { 'url': '/tournament/:id/round/:round',
                 'templateUrl': 'html/page/round.html',
                 'controller': 'MadnessCup.RoundController as ctrl' })
                 .state('admin', { 'url': '/admin',
@@ -69318,18 +69318,19 @@ var MadnessCup;
 })(MadnessCup || (MadnessCup = {}));
 
 angular.module('MadnessCup.config', [])
-.constant('enjin', {"name":"MadnessCup","description":"A tournament bracket app","author":{"name":"Madness Labs","email":"info@MadnessLabs.net","url":"http://MadnessLabs.net"},"root":"www/","templates":"templates/","mobile":true,"local":false,"debug":false,"url":"http://MadnessCup.net","version":"0.0.1","routes":[{"state":"login","url":"/login","templateUrl":"html/page/login.html","controller":"MadnessCup.LoginController as ctrl"},{"state":"round","url":"/round","templateUrl":"html/page/round.html","controller":"MadnessCup.RoundController as ctrl"},{"state":"admin","url":"/admin","templateUrl":"html/page/admin.html","controller":"MadnessCup.AdminController as ctrl"},{"state":"home","url":"/home","templateUrl":"html/page/home.html","controller":"MadnessCup.HomeController as ctrl"},{"state":"tournament","url":"/tournament/:id","templateUrl":"html/page/tournament.html","controller":"MadnessCup.TournamentController as ctrl"}],"plugins":["ionic","ngCordova","firebase","ng-mfb","relativeDate","ionic-datepicker"],"db":{"firebase":{"host":"https://madnesscup.firebaseio.com/"}},"html":{"dir":"html/","file":"index.html","srcDir":"src/jade/","srcFile":"app.jade","watch":["src/jade/**/*.jade","!src/jade/favicon.jade","!src/jade/app.jade"]},"css":{"dir":"css/","file":"build.css","srcDir":"src/scss/","vars":{"theme":{"primary":"#FFBB00","secondary":"#3B579D","warning":"#D62223","dark-gray":"#666666","light-gray":"#BDBDBD"},"light":"#ffffff !default","stable":"#f8f8f8 !default","positive":"$theme-primary !default","calm":"$theme-secondary !default","balanced":"#33cd5f !default","energized":"#ffc900 !default","assertive":"$theme-warning !default","royal":"#886aea !default","dark":"#444444 !default","ionicons-font-path":"'../fonts' !default","screen":{"xl":"1500px","lg":"1200px","md":"992px","sm":"768px","xs":"480px"},"grid":{"responsive":{"sm-break":"$screen-sm","md-break":"$screen-md","lg-break":"$screen-lg"}},"main-color":"$theme-primary !default","icons-font-size":"24px !default"},"libraries":["bower_components/ionic/scss/ionic.scss","bower_components/ng-material-floating-button/mfb/src/mfb.scss"],"build":["build/css/libraries.css","bower_components/flexboxgrid/dist/flexboxgrid.css","build/css/layout/**/*.css","build/css/page/**/*.css","build/css/modal/**/*.css"],"watch":["src/scss/**/*.scss","!src/scss/libraries.scss","!src/scss/_variables.scss"]},"js":{"dir":"js/","file":"build.js","srcDir":"src/ts/","libraries":["src/js/ionic.js","bower_components/ngCordova/dist/ng-cordova.js","bower_components/firebase/firebase.js","bower_components/angularfire/dist/angularfire.js","bower_components/ng-material-floating-button/src/mfb-directive.js","bower_components/angular-relative-date/angular-relative-date.js","bower_components/ionic-datepicker/dist/ionic-datepicker.bundle.min.js"],"build":["build/js/app.js","build/js/run.js","build/js/router.js","build/js/config.js","build/js/controller/**/*.js","build/js/factory/**/*.js","build/js/filter/**/*.js","build/js/directive/**/*.js","build/js/service/**/*.js"],"watch":["src/ts/**/*.ts"]},"font":{"dir":"fonts/","watch":["bower_components/ionic/release/fonts/**"]},"img":{"dir":"img/","favicon":"resources/icon.png","process":[{"folder":"character","width":800,"crop":false},{"folder":"stage","width":1920,"crop":false},{"folder":"splash","width":1920,"crop":false},{"folder":"logo","width":1024,"crop":false}],"watch":["resources/**"]}});
+.constant('enjin', {"name":"MadnessCup","description":"A tournament bracket app","author":{"name":"Madness Labs","email":"info@MadnessLabs.net","url":"http://MadnessLabs.net"},"root":"www/","templates":"templates/","mobile":true,"local":false,"debug":false,"url":"http://MadnessCup.net","version":"0.0.1","routes":[{"state":"login","url":"/login","templateUrl":"html/page/login.html","controller":"MadnessCup.LoginController as ctrl"},{"state":"round","url":"/tournament/:id/round/:round","templateUrl":"html/page/round.html","controller":"MadnessCup.RoundController as ctrl"},{"state":"admin","url":"/admin","templateUrl":"html/page/admin.html","controller":"MadnessCup.AdminController as ctrl"},{"state":"home","url":"/home","templateUrl":"html/page/home.html","controller":"MadnessCup.HomeController as ctrl"},{"state":"tournament","url":"/tournament/:id","templateUrl":"html/page/tournament.html","controller":"MadnessCup.TournamentController as ctrl"}],"plugins":["ionic","ngCordova","firebase","ng-mfb","relativeDate","ionic-datepicker"],"db":{"firebase":{"host":"https://madnesscup.firebaseio.com/"}},"html":{"dir":"html/","file":"index.html","srcDir":"src/jade/","srcFile":"app.jade","watch":["src/jade/**/*.jade","!src/jade/favicon.jade","!src/jade/app.jade"]},"css":{"dir":"css/","file":"build.css","srcDir":"src/scss/","vars":{"theme":{"primary":"#FFBB00","secondary":"#3B579D","warning":"#D62223","dark-gray":"#666666","light-gray":"#BDBDBD"},"light":"#ffffff !default","stable":"#f8f8f8 !default","positive":"$theme-primary !default","calm":"$theme-secondary !default","balanced":"#33cd5f !default","energized":"#ffc900 !default","assertive":"$theme-warning !default","royal":"#886aea !default","dark":"#444444 !default","ionicons-font-path":"'../fonts' !default","screen":{"xl":"1500px","lg":"1200px","md":"992px","sm":"768px","xs":"480px"},"grid":{"responsive":{"sm-break":"$screen-sm","md-break":"$screen-md","lg-break":"$screen-lg"}},"main-color":"$theme-primary !default","icons-font-size":"24px !default"},"libraries":["bower_components/ionic/scss/ionic.scss","bower_components/ng-material-floating-button/mfb/src/mfb.scss"],"build":["build/css/libraries.css","bower_components/flexboxgrid/dist/flexboxgrid.css","build/css/layout/**/*.css","build/css/page/**/*.css","build/css/modal/**/*.css"],"watch":["src/scss/**/*.scss","!src/scss/libraries.scss","!src/scss/_variables.scss"]},"js":{"dir":"js/","file":"build.js","srcDir":"src/ts/","libraries":["src/js/ionic.js","bower_components/ngCordova/dist/ng-cordova.js","bower_components/firebase/firebase.js","bower_components/angularfire/dist/angularfire.js","bower_components/ng-material-floating-button/src/mfb-directive.js","bower_components/angular-relative-date/angular-relative-date.js","bower_components/ionic-datepicker/dist/ionic-datepicker.bundle.min.js"],"build":["build/js/app.js","build/js/run.js","build/js/router.js","build/js/config.js","build/js/controller/**/*.js","build/js/factory/**/*.js","build/js/filter/**/*.js","build/js/directive/**/*.js","build/js/service/**/*.js"],"watch":["src/ts/**/*.ts"]},"font":{"dir":"fonts/","watch":["bower_components/ionic/release/fonts/**"]},"img":{"dir":"img/","favicon":"resources/icon.png","process":[{"folder":"character","width":800,"crop":false},{"folder":"stage","width":1920,"crop":false},{"folder":"splash","width":1920,"crop":false},{"folder":"logo","width":1024,"crop":false}],"watch":["resources/**"]}});
 
 /// <reference path="../../tsd/tsd.d.ts"/>
 var MadnessCup;
 (function (MadnessCup) {
     'use strict';
     var AdminController = (function () {
-        function AdminController(enjin, $firebaseObject, $firebaseArray, $filter) {
+        function AdminController(enjin, $firebaseObject, $firebaseArray, $filter, Brackets) {
             this.enjin = enjin;
             this.$firebaseObject = $firebaseObject;
             this.$firebaseArray = $firebaseArray;
             this.$filter = $filter;
+            this.Brackets = Brackets;
             // ON LOAD 
             this.tournament = {};
             this.dateOpts = {
@@ -69341,10 +69342,24 @@ var MadnessCup;
             this.tournaments = $firebaseArray(new Firebase(enjin.db.firebase.host + 'tournament'));
         }
         AdminController.prototype.addTournament = function () {
+            this.tournament.started = false;
             this.tournaments.$add(this.tournament).then(function () {
                 this.tournament = {};
                 this.formOpen = false;
             }.bind(this));
+        };
+        AdminController.prototype.startTournament = function (id) {
+            var players = [];
+            this.tournaments[id].started = true;
+            angular.forEach(this.tournaments[id].players, function (player, i) {
+                var name = player.name.split(' ');
+                player.name_first = name[0];
+                player.name_last = name[1];
+                players.push(player);
+            });
+            this.tournaments[id].rounds = [];
+            this.tournaments[id].rounds.push(this.Brackets.setup(players));
+            this.tournaments.$save(id);
         };
         return AdminController;
     }());
@@ -69486,9 +69501,30 @@ var MadnessCup;
 (function (MadnessCup) {
     'use strict';
     var RoundController = (function () {
-        function RoundController() {
-            // ON LOAD       
+        function RoundController($stateParams, enjin, $firebaseObject, $scope, $state) {
+            this.$scope = $scope;
+            this.$state = $state;
+            // ON LOAD    
+            this.round = $stateParams.round;
+            this.tournamentRef = new Firebase(enjin.db.firebase.host + 'tournament/' + $stateParams.id);
+            $firebaseObject(this.tournamentRef).$loaded().then(function (data) {
+                this.tournament = data;
+            }.bind(this));
         }
+        RoundController.prototype.playerAvatar = function (avatar) {
+            return {
+                backgroundImage: 'url(' + avatar + ')',
+                backgroundPosition: 'center',
+                padding: 0,
+                backgroundSize: 'cover'
+            };
+        };
+        RoundController.prototype.selectedStage = function (versus) {
+            return 'Final Destination';
+        };
+        RoundController.prototype.selectedStageBackground = function (versus) {
+            return { backgroundImage: 'url(img/stage/final_destination.jpg)' };
+        };
         return RoundController;
     }());
     angular.module('MadnessCup')
@@ -69500,8 +69536,9 @@ var MadnessCup;
 (function (MadnessCup) {
     'use strict';
     var TournamentController = (function () {
-        function TournamentController($stateParams, enjin, $firebaseObject, $scope) {
+        function TournamentController($stateParams, enjin, $firebaseObject, $scope, $state) {
             this.$scope = $scope;
+            this.$state = $state;
             // ON LOAD
             this.tournamentRef = new Firebase(enjin.db.firebase.host + 'tournament/' + $stateParams.id);
             $firebaseObject(this.tournamentRef).$loaded().then(function (data) {
@@ -69510,19 +69547,21 @@ var MadnessCup;
             }.bind(this));
         }
         TournamentController.prototype.addPlayer = function (player) {
-            console.log(this.tournament);
             if (typeof this.tournament.players === 'undefined') {
                 this.tournament.players = [];
             }
             if (typeof this.tournament.players[player.id] === 'undefined') {
                 this.tournament.players[player.id] = player;
                 this.tournamentRef.child('players').set(this.tournament.players, function () {
-                    alert('You have been added!');
+                    console.log('Welcome to the Tourney!');
                 });
             }
-            else {
-                alert('You are already added!');
-            }
+            var unwatch = this.tournament.$watch(function () {
+                if (this.tournament.started) {
+                    this.$state.go('round', { id: this.tournament.$id, round: 1 });
+                    unwatch();
+                }
+            }.bind(this));
         };
         TournamentController.prototype.removePlayer = function () {
             // Remove player
@@ -69594,6 +69633,48 @@ angular.module('MadnessCup').directive('textEditor', function () {
         }
     };
 });
+
+/// <reference path="../../tsd/angularjs/angular.d.ts"/>
+var MadnessCup;
+(function (MadnessCup) {
+    var BracketsService = (function () {
+        function BracketsService() {
+            // On Load
+        }
+        BracketsService.prototype.isOdd = function (num) { return num % 2; };
+        BracketsService.prototype.shuffle = function (array) {
+            var m = array.length, t, i;
+            while (m > 0) {
+                i = Math.floor(Math.random() * m--);
+                t = array[m];
+                array[m] = array[i];
+                array[i] = t;
+            }
+            return array;
+        };
+        BracketsService.prototype.setup = function (players) {
+            players = this.shuffle(players);
+            var matches = [];
+            if (this.isOdd(players.length)) {
+                var oddManOut = players.pop();
+                console.log(players, oddManOut);
+            }
+            for (var i = 0; i < players.length; i++) {
+                var currentIndex = i;
+                if (this.isOdd(currentIndex)) {
+                    var match = {
+                        'p1': players[currentIndex],
+                        'p2': players[currentIndex - 1]
+                    };
+                    matches.push(match);
+                }
+            }
+            return matches;
+        };
+        return BracketsService;
+    }());
+    angular.module('MadnessCup').service('Brackets', BracketsService);
+})(MadnessCup || (MadnessCup = {}));
 
 /// <reference path="../../tsd/tsd.d.ts"/>
 var MadnessCup;
@@ -69785,50 +69866,4 @@ var MadnessCup;
         return SessionService;
     }());
     angular.module('MadnessCup').service('Session', SessionService);
-})(MadnessCup || (MadnessCup = {}));
-
-/// <reference path="../../tsd/angularjs/angular.d.ts"/>
-var MadnessCup;
-(function (MadnessCup) {
-    var TournamentService = (function () {
-        function TournamentService($http, $q, $httpParamSerializer, $rootScope) {
-            this.$http = $http;
-            this.$q = $q;
-            this.$httpParamSerializer = $httpParamSerializer;
-            this.$rootScope = $rootScope;
-            // On Load
-        }
-        TournamentService.prototype.isOdd = function (num) { return num % 2; };
-        TournamentService.prototype.shuffle = function (array) {
-            var m = array.length, t, i;
-            while (m > 0) {
-                i = Math.floor(Math.random() * m--);
-                t = array[m];
-                array[m] = array[i];
-                array[i] = t;
-            }
-            return array;
-        };
-        TournamentService.prototype.makeBrackets = function (players) {
-            players = this.shuffle(players);
-            var matches = [];
-            if (this.isOdd(players.length)) {
-                var oddManOut = players.pop();
-                console.log(players, oddManOut);
-            }
-            for (var i = 0; i < players.length; i++) {
-                var currentIndex = i;
-                if (this.isOdd(currentIndex)) {
-                    var match = {
-                        'p1': players[currentIndex],
-                        'p2': players[currentIndex - 1]
-                    };
-                    matches.push(match);
-                }
-            }
-            return matches;
-        };
-        return TournamentService;
-    }());
-    angular.module('MadnessCup').service('Tournament', TournamentService);
 })(MadnessCup || (MadnessCup = {}));
