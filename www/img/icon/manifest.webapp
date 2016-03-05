@@ -1,0 +1,14 @@
+{
+  "version": "0.0.1",
+  "name": "MadnessCup",
+  "description": "A tournament bracket app",
+  "icons": {
+    "60": "/img/icon/firefox_app_60x60.png",
+    "128": "/img/icon/firefox_app_128x128.png",
+    "512": "/img/icon/firefox_app_512x512.png"
+  },
+  "developer": {
+    "name": null,
+    "url": null
+  }
+}

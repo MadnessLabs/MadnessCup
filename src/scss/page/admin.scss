@@ -3,6 +3,29 @@
 
 // PAGE STYLES
 .state-admin{
+
+    button.icon-right{
+        margin:0 !important;
+    }
+
+    input[type="date"]{
+        width:100%;
+    }
+
+    .editor{
+        position: relative;
+        height: 200px;
+        [contenteditable]{
+            padding: 10px 15px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            overflow: auto;
+        }
+    }
+
     @media (max-width: $screen-xl) {
 
     }

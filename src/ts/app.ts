@@ -7,7 +7,8 @@
 		'ngCordova', 
 		'firebase', 
 		'ng-mfb', 
-		'relativeDate'
+		'relativeDate', 
+		'ionic-datepicker'
     ]);
 
 })();

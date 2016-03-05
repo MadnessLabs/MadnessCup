@@ -1,3 +1,23 @@
-ion-view(view-title='admin')
-    ion-content(class='state-admin')
-        
+ion-view(view-title='Admin')
+    ion-content(class='state-admin' overflow-scroll="true")
+        .card(ng-repeat="tournament in ctrl.tournaments")
+            ion-list
+                ion-item
+                    h2 {{tournament.name}} {{tournament.number}}
+                    span.badge {{tournament.date}}
+                    p(ng-bind-html="tournament.rules")
+        form.card(name="tournamentForm" ng-submit="ctrl.addTournament()" novalidate="")
+            ion-list(ng-show="ctrl.formOpen")
+                ion-item.item-divider Tournament Info
+                ion-item.item-input
+                    input(type="text" placeholder="Name" ng-model="ctrl.tournament.name" required)
+                ion-item.item-input
+                    input(type="number" placeholder="Number" ng-model="ctrl.tournament.number" required)
+                ion-item.item-input
+                    ionic-datepicker(input-obj="ctrl.dateOpts")
+                        input(type="text" placeholder="Date" ng-model="ctrl.tournament.date" required)
+                ion-item.item-input.editor
+                    div(contenteditable="true" text-editor placeholder="Rules" ng-model="ctrl.tournament.rules")
+                ion-item
+                    button.button.button-clear.button-block.icon-right.ion-checkmark(type="submit" ng-disabled="tournamentForm.$invalid") Add Tournament
+            a.button.button-clear.button-block.icon-right.ion-plus(ng-click="ctrl.formOpen = !ctrl.formOpen" ng-hide="ctrl.formOpen") New Tournament

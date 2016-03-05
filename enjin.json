@@ -44,7 +44,8 @@
         "ngCordova",
         "firebase",
         "ng-mfb",
-        "relativeDate"
+        "relativeDate",
+        "ionic-datepicker"
     ],
     "db": {
         "firebase": {
@@ -68,7 +69,7 @@
         "srcDir": "src/scss/",
         "vars": {
             "theme": {
-                "primary": "#196EAF",
+                "primary": "#FFBB00",
                 "secondary": "#17A05E",
                 "warning": "#ef473a",
                 "dark-gray": "#666666",
@@ -123,12 +124,13 @@
         "file": "build.js",
         "srcDir": "src/ts/",
         "libraries": [
-            "bower_components/ionic/release/js/ionic.bundle.js",
+            "src/js/ionic.js",
             "bower_components/ngCordova/dist/ng-cordova.js",
             "bower_components/firebase/firebase.js",
             "bower_components/angularfire/dist/angularfire.js",
             "bower_components/ng-material-floating-button/src/mfb-directive.js",
-            "bower_components/angular-relative-date/angular-relative-date.js"
+            "bower_components/angular-relative-date/angular-relative-date.js",
+            "bower_components/ionic-datepicker/dist/ionic-datepicker.bundle.min.js"
         ],
         "build": [
             "build/js/app.js",
@@ -154,28 +156,23 @@
     "img": {
         "dir": "img/",
         "favicon": "resources/icon.png",
-        "process": [
-            { 
-                "folder": "character", 
-                "width": 800,
-                "crop": false
-            },
-            {
-                "folder": "stage",
-                "width": 1920,
-                "crop": false
-            },
-            {
-                "folder": "splash",
-                "width": 1920,
-                "crop": false
-            },
-            {
-                "folder": "logo",
-                "width": 1024,
-                "crop": false
-            }
-        ],
+        "process": [{
+            "folder": "character",
+            "width": 800,
+            "crop": false
+        }, {
+            "folder": "stage",
+            "width": 1920,
+            "crop": false
+        }, {
+            "folder": "splash",
+            "width": 1920,
+            "crop": false
+        }, {
+            "folder": "logo",
+            "width": 1024,
+            "crop": false
+        }],
         "watch": [
             "resources/**"
         ]

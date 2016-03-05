@@ -15,20 +15,8 @@ html(lang="en")
     body(ng-app=name)
         ion-nav-bar.bar-positive.has-tabs-top
             ion-nav-buttons(side='left')
-                button.button.button-icon.icon.ion-navicon(ng-click="$root.toggleMenu()")
+                button.button.button-icon.icon.ion-trophy
             ion-nav-buttons(side="right")
-                a.button.button-clear.icon.ion-person(ui-sref='profile({userId:$root.session.user_id})')
-        ion-side-menus
-            ion-side-menu(side="left")
-                ion-content(scroll="false").has-header
-                    .logo
-                        img(src="img/icon.png")
-                        i.icon.ion-power.menu-close(ng-click="$root.logout()")
-                    ion-list
-                        ion-item.item-icon-right.menu-close(ui-sref="home")
-                            i.icon.ion-home
-                            | Home
-                    .branding
-                        img(src='img/madness-labs.png' ng-click="$root.openLink('http://madnesslabs.net')")
-            ion-side-menu-content(drag-content="false")           
-                ion-nav-view
+                a.button.button-clear.icon.ion-power(ui-sref="login")
+        ion-nav-view         
+                
