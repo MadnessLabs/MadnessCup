@@ -30,10 +30,10 @@ var addsrc       = require('gulp-add-src'),
     ts           = require('gulp-typescript'),
     tsd          = require('gulp-tsd'),
     tslint       = require('gulp-tslint'),
-    uglify       = require('gulp-uglify'),
-    imageresize  = require('gulp-image-resize'),
-    imagemin     = require('gulp-imagemin'),
-    pngquant     = require('imagemin-pngquant');
+    uglify       = require('gulp-uglify');
+    //imageresize  = require('gulp-image-resize'),
+    //imagemin     = require('gulp-imagemin'),
+    //pngquant     = require('imagemin-pngquant');
 
 
  /////////////////////////////////////

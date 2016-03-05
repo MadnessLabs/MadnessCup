@@ -70,8 +70,8 @@
         "vars": {
             "theme": {
                 "primary": "#FFBB00",
-                "secondary": "#17A05E",
-                "warning": "#ef473a",
+                "secondary": "#3B579D",
+                "warning": "#D62223",
                 "dark-gray": "#666666",
                 "light-gray": "#BDBDBD"
             },
