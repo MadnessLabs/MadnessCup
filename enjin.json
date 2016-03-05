@@ -35,7 +35,7 @@
         "controller": "MadnessCup.HomeController as ctrl"
     }, {
         "state": "tournament",
-        "url": "/tournament",
+        "url": "/tournament/:id",
         "templateUrl": "html/page/tournament.html",
         "controller": "MadnessCup.TournamentController as ctrl"
     }],

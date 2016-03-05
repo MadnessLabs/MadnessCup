@@ -7,11 +7,11 @@ module MadnessCup {
         playerUrl: string;
 
         constructor(
-            protected $state, 
             protected enjin,
             protected $firebaseObject,
             protected $firebaseArray,
-            protected $rootScope
+            protected $state,
+            protected Session
         ) {
             //On Load
             this.ref = new Firebase(this.enjin.db.firebase.host);
@@ -43,22 +43,27 @@ module MadnessCup {
             var playerRef = new Firebase(this.playerUrl + data.auth.uid);
             this.$firebaseObject(playerRef).$loaded().then(function(player){
                 if (player.name) {
-                    this.startSession(player);
+                    player.id = data.auth.uid;
+                    this.Session.set(player);
+                    this.$state.go('home');
                 } else {
                     var playersRef = new Firebase(this.playerUrl);
                     var players = this.$firebaseArray(playersRef);
                     var newPlayer = {
+                        id: '',
                         name: '',
                         avatar: '',
                         profile: ''
                     };
                     switch (data.provider) {
                         case 'google':
+                            newPlayer.id = data.auth.uid;
                             newPlayer.name = data.google.displayName;
                             newPlayer.avatar = data.google.profileImageURL;
                             newPlayer.profile = data.google.cachedUserProfile.link;
                             break;
                         case 'facebook':
+                            newPlayer.id = data.auth.uid;
                             newPlayer.name = data.facebook.displayName;
                             newPlayer.avatar = data.facebook.profileImageURL;
                             newPlayer.profile = data.facebook.cachedUserProfile.link;
@@ -68,23 +73,14 @@ module MadnessCup {
                     }
                     
                     playersRef.child(data.auth.uid).set(newPlayer, function(){
-                        this.startSession(newPlayer);
+                        this.Session.set(newPlayer);
+                        this.$stage.go('home');
                     }.bind(this));                
                 }
             }.bind(this))
             .catch(function(error){
                 console.log(error);
             });
-        }
-
-        startSession(player) {
-            this.enjin.session = this.$rootScope.session = {
-                name: player.name,
-                avatar: player.avatar,
-                profile: player.profile
-            };
-            localStorage.setItem('enjin_session', JSON.stringify(this.enjin.session));
-            this.$state.go('home');
         }
     }
 

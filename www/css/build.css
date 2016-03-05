@@ -10869,6 +10869,24 @@ body {
     font: 14px Helvetica, arial;
     color: #aaa; }
 
+ion-popover-view.fit {
+  margin-top: 0px !important;
+  margin-left: -15px !important;
+  height: auto; }
+
+ion-popover-view.fit ion-content {
+  position: relative; }
+
+.platform-android ion-popover-view.fit {
+  margin-top: 10px; }
+
+.platform-ios ion-popover-view.fit {
+  padding-top: 10px;
+  padding-bottom: 10px; }
+
+.modal-rules ion-content {
+  padding: 30px; }
+
 .state-admin button.icon-right {
   margin: 0 !important; }
 
@@ -10887,6 +10905,13 @@ body {
     right: 0;
     overflow: auto; }
 
+.state-home .card .item-image {
+  background-color: #FFBB00; }
+  .state-home .card .item-image img {
+    width: 200px; }
+
+.state-home .card .ion-android-more-vertical {
+  cursor: pointer; }
 
 .state-login {
   background: url(../img/splash/ssb4-splash.jpg);

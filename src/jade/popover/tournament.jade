@@ -1,0 +1,8 @@
+ion-popover-view.fit
+    ion-list
+        a.item.item-icon-left(ng-click="ctrl.rules()")
+            i.icon.ion-help-circled
+            | View Rules
+        a.item.item-icon-left(ng-click="ctrl.closeMenu()" ui-sref="tournament({id:ctrl.tournament.$id})")
+            i.icon.ion-android-people
+            | Join Lobby

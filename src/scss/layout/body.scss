@@ -35,3 +35,28 @@ body {
         color: #aaa;
     }
 }
+
+ion-popover-view.fit {
+   margin-top:0px !important;
+   margin-left:-15px !important;
+   height: auto;
+}
+
+ion-popover-view.fit ion-content {
+  position: relative;
+}
+
+.platform-android ion-popover-view.fit {
+  margin-top: 10px;
+}
+
+.platform-ios ion-popover-view.fit {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.modal-rules {
+    ion-content{
+        padding: 30px;
+    }
+}
