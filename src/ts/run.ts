@@ -17,22 +17,13 @@ module MadnessCup {
             $ionicSideMenuDelegate,
             $window,
             $cordovaInAppBrowser,
-            $http
+            $http,
+            Session
         ) {
 
             $ionicPlatform.ready(function() {
                 if (window.cordova && window.cordova.plugins.Keyboard) {
                     cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-                }
-
-                if (window.cordova) {
-                    $cordovaSplashscreen.hide();
-
-                    $rootScope.$watch(function() {
-                        return $cordovaKeyboard.isVisible();
-                    }, function(value) {
-                        $rootScope.keyboardOpen = value;
-                    });
                 }
 
                 $rootScope.openMap = function(marker) {
@@ -50,26 +41,13 @@ module MadnessCup {
                     }
                 };
 
-                $rootScope.goBack = function() {
-                    $window.history.back();
-                };
+                if (!enjin.session && localStorage.getItem('enjin_session')) {
+                    Session.get();
+                }
 
-                $rootScope.openLink = function(link) {
-                    if (ionic.Platform.isAndroid()) {
-                        $window.open(link, '_blank', 'location=yes');
-                    } else {
-                        var win = window.open(link, '_blank');
-                        win.focus();
-                    }
-                };
-
-                $rootScope.call = function(phone) {
-                    document.location.href = 'tel:' + phone;
-                };
-
-                $rootScope.toggleMenu = function() {
-                    $ionicSideMenuDelegate.toggleLeft();
-                };
+                $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+                    Session.check(event, toState, toParams, fromState, fromParams);
+                }.bind(this));
 
                 $rootScope.$on('loading:show', function() {
                     $ionicLoading.show({ template: '<ion-spinner icon="ripple" class="spinner-positive"></ion-spinner>' });
@@ -78,6 +56,11 @@ module MadnessCup {
                 $rootScope.$on('loading:hide', function() {
                     $ionicLoading.hide();
                 });
+
+                $rootScope.logout = function() {
+                    Session.destroy();
+                    $state.go('login');
+                };
 
             });
         }

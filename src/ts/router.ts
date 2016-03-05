@@ -17,7 +17,7 @@ module MadnessCup {
 				.state('home', {'url':'/home', 
 'templateUrl':'html/page/home.html', 
 'controller':'MadnessCup.HomeController as ctrl'})
-				.state('tournament', {'url':'/tournament', 
+				.state('tournament', {'url':'/tournament/:id', 
 'templateUrl':'html/page/tournament.html', 
 'controller':'MadnessCup.TournamentController as ctrl'});
 

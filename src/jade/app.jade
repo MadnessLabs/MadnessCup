@@ -17,6 +17,6 @@ html(lang="en")
             ion-nav-buttons(side='left')
                 button.button.button-icon.icon.ion-trophy
             ion-nav-buttons(side="right")
-                a.button.button-clear.icon.ion-power(ui-sref="login")
+                a.button.button-clear.icon.ion-power(ng-click="$root.logout()")
         ion-nav-view         
                 

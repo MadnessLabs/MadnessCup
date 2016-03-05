@@ -3,6 +3,17 @@
 
 // PAGE STYLES
 .state-home{
+    .card{
+        .item-image{
+            background-color: $theme-primary;
+            img{
+                width: 200px;
+            }
+        }
+        .ion-android-more-vertical{
+            cursor: pointer;
+        }
+    }
     @media (max-width: $screen-xl) {
 
     }
