@@ -1,3 +1,7 @@
 ion-view
     ion-nav-title {{ctrl.tournament.name}} {{ctrl.tournament.number}}
-    ion-content(class='state-tournament') Hello There
+    ion-content(class='state-tournament') 
+        .card
+            ion-list
+                ion-item.item-divider Players
+                ion-item(ng-repeat="player in ctrl.tournament.players") {{player.name}}
