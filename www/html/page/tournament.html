@@ -1,5 +1,12 @@
 
 <ion-view>
   <ion-nav-title>{{ctrl.tournament.name}} {{ctrl.tournament.number}}</ion-nav-title>
-  <ion-content class="state-tournament">Hello There</ion-content>
+  <ion-content class="state-tournament"> 
+    <div class="card">
+      <ion-list>
+        <ion-item class="item-divider">Players</ion-item>
+        <ion-item ng-repeat="player in ctrl.tournament.players">{{player.name}}</ion-item>
+      </ion-list>
+    </div>
+  </ion-content>
 </ion-view>
