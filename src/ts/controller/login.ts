@@ -74,7 +74,7 @@ module MadnessCup {
                     
                     playersRef.child(data.auth.uid).set(newPlayer, function(){
                         this.Session.set(newPlayer);
-                        this.$stage.go('home');
+                        this.$state.go('home');
                     }.bind(this));                
                 }
             }.bind(this))

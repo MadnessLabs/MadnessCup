@@ -69468,7 +69468,7 @@ var MadnessCup;
                     }
                     playersRef.child(data.auth.uid).set(newPlayer, function () {
                         this.Session.set(newPlayer);
-                        this.$stage.go('home');
+                        this.$state.go('home');
                     }.bind(this));
                 }
             }.bind(this))
@@ -69503,13 +69503,29 @@ var MadnessCup;
         function TournamentController($stateParams, enjin, $firebaseObject, $scope) {
             this.$scope = $scope;
             // ON LOAD
-            $firebaseObject(new Firebase(enjin.db.firebase.host + 'tournament/' + $stateParams.id)).$loaded().then(function (data) {
+            this.tournamentRef = new Firebase(enjin.db.firebase.host + 'tournament/' + $stateParams.id);
+            $firebaseObject(this.tournamentRef).$loaded().then(function (data) {
                 this.tournament = data;
                 this.addPlayer(enjin.session);
             }.bind(this));
         }
         TournamentController.prototype.addPlayer = function (player) {
-            console.log(player);
+            console.log(this.tournament);
+            if (typeof this.tournament.players === 'undefined') {
+                this.tournament.players = [];
+            }
+            if (typeof this.tournament.players[player.id] === 'undefined') {
+                this.tournament.players[player.id] = player;
+                this.tournamentRef.child('players').set(this.tournament.players, function () {
+                    alert('You have been added!');
+                });
+            }
+            else {
+                alert('You are already added!');
+            }
+        };
+        TournamentController.prototype.removePlayer = function () {
+            // Remove player
         };
         return TournamentController;
     }());
