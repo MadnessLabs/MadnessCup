@@ -10920,7 +10920,8 @@ ion-popover-view.fit ion-content {
   background-size: cover; }
   .state-login .row {
     position: fixed;
-    bottom: 25px;
+    bottom: 0;
+    padding: 25px 0;
     left: 10px;
     right: 0;
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+0,1+100 */
