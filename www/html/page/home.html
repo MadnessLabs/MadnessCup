@@ -1,7 +1,7 @@
 
 <ion-view view-title="Home">
   <ion-content class="state-home">
-    <div ng-repeat="tournament in ctrl.tournaments" class="card">
+    <div ng-repeat="tournament in ctrl.tournaments" overflow-scroll="true" class="card">
       <ion-item class="item-image"><img src="img/icon.png"/></ion-item>
       <ion-item class="item-icon-right">
         <h2>{{tournament.name}} {{tournament.number}}</h2><i ng-click="ctrl.openMenu($event, tournament)" class="icon ion-android-more-vertical"></i>

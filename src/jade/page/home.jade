@@ -1,6 +1,6 @@
 ion-view(view-title='Home')
     ion-content(class='state-home')
-        .card(ng-repeat="tournament in ctrl.tournaments")
+        .card(ng-repeat="tournament in ctrl.tournaments" overflow-scroll="true")
             ion-item.item-image
                 img(src="img/icon.png")
             ion-item.item-icon-right

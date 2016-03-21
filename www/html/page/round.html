@@ -1,7 +1,7 @@
 
 <ion-view>
   <ion-nav-title>{{ctrl.tournament.name}}: Round {{ctrl.round}}</ion-nav-title>
-  <ion-content class="state-round">
+  <ion-content overflow-scroll="true" class="state-round">
     <div class="row main-grid">
       <div ng-repeat="(key, versus) in ctrl.tournament.rounds[ctrl.round - 1]" class="col-ss-12 col-sm-6 col-lg-4">
         <div ng-style="ctrl.selectedStageBackground($index)" ui-sref="match({id: ctrl.tournament.$id, round: ctrl.round, matchup: key})" class="card">
