@@ -69305,7 +69305,10 @@ var MadnessCup;
                 'controller': 'MadnessCup.HomeController as ctrl' })
                 .state('tournament', { 'url': '/tournament/:id',
                 'templateUrl': 'html/page/tournament.html',
-                'controller': 'MadnessCup.TournamentController as ctrl' });
+                'controller': 'MadnessCup.TournamentController as ctrl' })
+                .state('match', { 'url': '/tournament/:id/round/:round/matchup/:matchup',
+                'templateUrl': 'html/page/match.html',
+                'controller': 'MadnessCup.MatchController as ctrl' });
             $urlRouterProvider.otherwise(function ($injector, $location) {
                 var $state = $injector.get('$state');
                 $state.go('login');
@@ -69318,7 +69321,7 @@ var MadnessCup;
 })(MadnessCup || (MadnessCup = {}));
 
 angular.module('MadnessCup.config', [])
-.constant('enjin', {"name":"MadnessCup","description":"A tournament bracket app","author":{"name":"Madness Labs","email":"info@MadnessLabs.net","url":"http://MadnessLabs.net"},"root":"www/","templates":"templates/","mobile":true,"local":false,"debug":false,"url":"http://MadnessCup.net","version":"0.0.1","routes":[{"state":"login","url":"/login","templateUrl":"html/page/login.html","controller":"MadnessCup.LoginController as ctrl"},{"state":"round","url":"/tournament/:id/round/:round","templateUrl":"html/page/round.html","controller":"MadnessCup.RoundController as ctrl"},{"state":"admin","url":"/admin","templateUrl":"html/page/admin.html","controller":"MadnessCup.AdminController as ctrl"},{"state":"home","url":"/home","templateUrl":"html/page/home.html","controller":"MadnessCup.HomeController as ctrl"},{"state":"tournament","url":"/tournament/:id","templateUrl":"html/page/tournament.html","controller":"MadnessCup.TournamentController as ctrl"}],"plugins":["ionic","ngCordova","firebase","ng-mfb","relativeDate","ionic-datepicker"],"db":{"firebase":{"host":"https://madnesscup.firebaseio.com/"}},"html":{"dir":"html/","file":"index.html","srcDir":"src/jade/","srcFile":"app.jade","watch":["src/jade/**/*.jade","!src/jade/favicon.jade","!src/jade/app.jade"]},"css":{"dir":"css/","file":"build.css","srcDir":"src/scss/","vars":{"theme":{"primary":"#FFBB00","secondary":"#3B579D","warning":"#D62223","dark-gray":"#666666","light-gray":"#BDBDBD"},"light":"#ffffff !default","stable":"#f8f8f8 !default","positive":"$theme-primary !default","calm":"$theme-secondary !default","balanced":"#33cd5f !default","energized":"#ffc900 !default","assertive":"$theme-warning !default","royal":"#886aea !default","dark":"#444444 !default","ionicons-font-path":"'../fonts' !default","screen":{"xl":"1500px","lg":"1200px","md":"992px","sm":"768px","xs":"480px"},"grid":{"responsive":{"sm-break":"$screen-sm","md-break":"$screen-md","lg-break":"$screen-lg"}},"main-color":"$theme-primary !default","icons-font-size":"24px !default"},"libraries":["bower_components/ionic/scss/ionic.scss","bower_components/ng-material-floating-button/mfb/src/mfb.scss"],"build":["build/css/libraries.css","bower_components/flexboxgrid/dist/flexboxgrid.css","build/css/layout/**/*.css","build/css/page/**/*.css","build/css/modal/**/*.css"],"watch":["src/scss/**/*.scss","!src/scss/libraries.scss","!src/scss/_variables.scss"]},"js":{"dir":"js/","file":"build.js","srcDir":"src/ts/","libraries":["src/js/ionic.js","bower_components/ngCordova/dist/ng-cordova.js","bower_components/firebase/firebase.js","bower_components/angularfire/dist/angularfire.js","bower_components/ng-material-floating-button/src/mfb-directive.js","bower_components/angular-relative-date/angular-relative-date.js","bower_components/ionic-datepicker/dist/ionic-datepicker.bundle.min.js"],"build":["build/js/app.js","build/js/run.js","build/js/router.js","build/js/config.js","build/js/controller/**/*.js","build/js/factory/**/*.js","build/js/filter/**/*.js","build/js/directive/**/*.js","build/js/service/**/*.js"],"watch":["src/ts/**/*.ts"]},"font":{"dir":"fonts/","watch":["bower_components/ionic/release/fonts/**"]},"img":{"dir":"img/","favicon":"resources/icon.png","process":[{"folder":"character","width":800,"crop":false},{"folder":"stage","width":1920,"crop":false},{"folder":"splash","width":1920,"crop":false},{"folder":"logo","width":1024,"crop":false}],"watch":["resources/**"]}});
+.constant('enjin', {"name":"MadnessCup","description":"A tournament bracket app","author":{"name":"Madness Labs","email":"info@MadnessLabs.net","url":"http://MadnessLabs.net"},"root":"www/","templates":"templates/","mobile":true,"local":false,"debug":false,"url":"http://MadnessCup.net","version":"0.0.1","routes":[{"state":"login","url":"/login","templateUrl":"html/page/login.html","controller":"MadnessCup.LoginController as ctrl"},{"state":"round","url":"/tournament/:id/round/:round","templateUrl":"html/page/round.html","controller":"MadnessCup.RoundController as ctrl"},{"state":"admin","url":"/admin","templateUrl":"html/page/admin.html","controller":"MadnessCup.AdminController as ctrl"},{"state":"home","url":"/home","templateUrl":"html/page/home.html","controller":"MadnessCup.HomeController as ctrl"},{"state":"tournament","url":"/tournament/:id","templateUrl":"html/page/tournament.html","controller":"MadnessCup.TournamentController as ctrl"},{"state":"match","url":"/tournament/:id/round/:round/matchup/:matchup","templateUrl":"html/page/match.html","controller":"MadnessCup.MatchController as ctrl"}],"plugins":["ionic","ngCordova","firebase","ng-mfb","relativeDate","ionic-datepicker"],"db":{"firebase":{"host":"https://madnesscup.firebaseio.com/"}},"html":{"dir":"html/","file":"index.html","srcDir":"src/jade/","srcFile":"app.jade","watch":["src/jade/**/*.jade","!src/jade/favicon.jade","!src/jade/app.jade"]},"css":{"dir":"css/","file":"build.css","srcDir":"src/scss/","vars":{"theme":{"primary":"#FFBB00","secondary":"#3B579D","warning":"#D62223","dark-gray":"#666666","light-gray":"#BDBDBD"},"light":"#ffffff !default","stable":"#f8f8f8 !default","positive":"$theme-primary !default","calm":"$theme-secondary !default","balanced":"#33cd5f !default","energized":"#ffc900 !default","assertive":"$theme-warning !default","royal":"#886aea !default","dark":"#444444 !default","ionicons-font-path":"'../fonts' !default","screen":{"xl":"1500px","lg":"1200px","md":"992px","sm":"768px","xs":"480px"},"grid":{"columns":12,"gutter":"0rem","responsive":{"sm-break":"$screen-sm","md-break":"$screen-md","lg-break":"$screen-lg"}},"main-color":"$theme-primary !default","icons-font-size":"24px !default"},"libraries":["bower_components/ionic/scss/ionic.scss","bower_components/ng-material-floating-button/mfb/src/mfb.scss"],"build":["build/css/libraries.css","build/css/layout/**/*.css","build/css/page/**/*.css","build/css/modal/**/*.css"],"watch":["src/scss/**/*.scss","!src/scss/libraries.scss","!src/scss/_variables.scss"]},"js":{"dir":"js/","file":"build.js","srcDir":"src/ts/","libraries":["src/js/ionic.js","bower_components/ngCordova/dist/ng-cordova.js","bower_components/firebase/firebase.js","bower_components/angularfire/dist/angularfire.js","bower_components/ng-material-floating-button/src/mfb-directive.js","bower_components/angular-relative-date/angular-relative-date.js","bower_components/ionic-datepicker/dist/ionic-datepicker.bundle.min.js"],"build":["build/js/app.js","build/js/run.js","build/js/router.js","build/js/config.js","build/js/controller/**/*.js","build/js/factory/**/*.js","build/js/filter/**/*.js","build/js/directive/**/*.js","build/js/service/**/*.js"],"watch":["src/ts/**/*.ts"]},"font":{"dir":"fonts/","watch":["bower_components/ionic/release/fonts/**"]},"img":{"dir":"img/","favicon":"resources/icon.png","process":[{"folder":"character","width":800,"crop":false},{"folder":"stage","width":1920,"crop":false},{"folder":"splash","width":1920,"crop":false},{"folder":"logo","width":1024,"crop":false}],"watch":["resources/**"]}});
 
 /// <reference path="../../tsd/tsd.d.ts"/>
 var MadnessCup;
@@ -69500,10 +69503,110 @@ var MadnessCup;
 var MadnessCup;
 (function (MadnessCup) {
     'use strict';
+    var MatchController = (function () {
+        function MatchController($interval, $timeout, enjin, $firebaseObject, $stateParams, Player, Character, $ionicModal, $scope) {
+            this.$interval = $interval;
+            this.$timeout = $timeout;
+            this.enjin = enjin;
+            this.$firebaseObject = $firebaseObject;
+            this.$stateParams = $stateParams;
+            this.Player = Player;
+            this.Character = Character;
+            this.$ionicModal = $ionicModal;
+            this.$scope = $scope;
+            // ON LOAD       
+            this.maps = [
+                'battlefield.jpg',
+                'final_destination.jpg',
+                'lylat_cruise.png',
+                'smashville.jpg',
+                'dream_land.png',
+                'town_and_city.png'
+            ];
+            this.characters = Character.all();
+            this.banned = [];
+            var matchupUrl = this.enjin.db.firebase.host
+                + 'tournament/'
+                + $stateParams.id
+                + '/rounds/'
+                + ($stateParams.round - 1)
+                + '/'
+                + $stateParams.matchup;
+            $firebaseObject(new Firebase(matchupUrl)).$loaded(function (res) {
+                this.matchup = res;
+            }.bind(this));
+            // this.countDown(10, function() {
+            //     //alert('Im done counting');
+            // });
+        }
+        MatchController.prototype.mapBackground = function (map) {
+            return { backgroundImage: 'url(../img/stage/' + map + ')' };
+        };
+        MatchController.prototype.banMap = function (index) {
+            if (this.banned.indexOf(index) === -1) {
+                this.banned.push(index);
+            }
+        };
+        MatchController.prototype.thisFn = function () {
+            // Run when countdown complete
+        };
+        MatchController.prototype.countDown = function (time, callback) {
+            this.radius = 50;
+            this.counter = time;
+            this.offset = 0;
+            var timer = time + 1;
+            this.finalOffset = 2 * Math.PI * this.radius;
+            this.$interval(function () {
+                this.offset += this.finalOffset / time;
+                timer--;
+                this.counter = timer;
+                if (this.counter === 1) {
+                    this.$timeout(function () {
+                        this.counter = 0;
+                        callback();
+                    }.bind(this), 1000);
+                }
+            }.bind(this), 1000, time);
+        };
+        MatchController.prototype.playerAvatar = function (avatar) {
+            var playerAvatar = this.Player.avatar(avatar);
+            return playerAvatar;
+        };
+        MatchController.prototype.closeModal = function () {
+            this.modal.hide();
+            this.modal.remove();
+        };
+        MatchController.prototype.selectCharacter = function (player) {
+            this.player = player;
+            this.$ionicModal.fromTemplateUrl('html/modal/character.html', {
+                scope: this.$scope,
+                animation: 'slide-in-up',
+                backdropClickToClose: true
+            }).then(function (modal) {
+                this.modal = modal;
+                this.modal.show();
+            }.bind(this));
+        };
+        MatchController.prototype.setCharacter = function (character) {
+            this.matchup[this.player].avatar = 'img/character/' + character.image;
+            this.closeModal();
+            this.characterSearch = '';
+        };
+        return MatchController;
+    }());
+    angular.module('MadnessCup')
+        .controller('MadnessCup.MatchController', MatchController);
+})(MadnessCup || (MadnessCup = {}));
+
+/// <reference path="../../tsd/tsd.d.ts"/>
+var MadnessCup;
+(function (MadnessCup) {
+    'use strict';
     var RoundController = (function () {
-        function RoundController($stateParams, enjin, $firebaseObject, $scope, $state) {
+        function RoundController($stateParams, enjin, $firebaseObject, $scope, $state, Player) {
             this.$scope = $scope;
             this.$state = $state;
+            this.Player = Player;
             // ON LOAD    
             this.round = $stateParams.round;
             this.tournamentRef = new Firebase(enjin.db.firebase.host + 'tournament/' + $stateParams.id);
@@ -69512,12 +69615,7 @@ var MadnessCup;
             }.bind(this));
         }
         RoundController.prototype.playerAvatar = function (avatar) {
-            return {
-                backgroundImage: 'url(' + avatar + ')',
-                backgroundPosition: 'center',
-                padding: 0,
-                backgroundSize: 'cover'
-            };
+            return this.Player.avatar(avatar);
         };
         RoundController.prototype.selectedStage = function (versus) {
             return 'Final Destination';
@@ -69589,6 +69687,17 @@ angular.module('MadnessCup').directive('allowPattern', function () {
                     }
                 });
             };
+        }
+    };
+});
+
+/// <reference path="../../tsd/tsd.d.ts"/>
+angular.module('MadnessCup').directive('countdown', function () {
+    return {
+        restrict: 'EA',
+        templateUrl: 'html/directive/countdown.html',
+        link: function (scope, element, attrs) {
+            //alert('I loaded');
         }
     };
 });
@@ -69676,6 +69785,78 @@ var MadnessCup;
     angular.module('MadnessCup').service('Brackets', BracketsService);
 })(MadnessCup || (MadnessCup = {}));
 
+/// <reference path="../../tsd/angularjs/angular.d.ts"/>
+var MadnessCup;
+(function (MadnessCup) {
+    var CharacterService = (function () {
+        function CharacterService() {
+            // On Load
+        }
+        CharacterService.prototype.all = function () {
+            return [
+                { name: 'Bayonetta', image: 'bayonetta.png' },
+                { name: 'Bowser', image: 'bowser.png' },
+                { name: 'Bowser Jr', image: 'bowser_jr.png' },
+                { name: 'Captain Falcon', image: 'captain_falcon.png' },
+                { name: 'Charizard', image: 'charizard.png' },
+                { name: 'Cloud', image: 'cloud.png' },
+                { name: 'Corrin', image: 'corrin.png' },
+                { name: 'Dark Pit', image: 'dark_pit.png' },
+                { name: 'Diddy Kong', image: 'diddy_kong.png' },
+                { name: 'Donkey Kong', image: 'donkey_kong.png' },
+                { name: 'Dr Mario', image: 'dr_mario.png' },
+                { name: 'Duck Hunt', image: 'duck_hunt.png' },
+                { name: 'Falco', image: 'falco.png' },
+                { name: 'Fox', image: 'fox.png' },
+                { name: 'Ganondorf', image: 'ganondorf.png' },
+                { name: 'Greninja', image: 'greninja.png' },
+                { name: 'Ike', image: 'ike.png' },
+                { name: 'Jigglypuff', image: 'jigglypuff.png' },
+                { name: 'King Dedede', image: 'king_dedede.png' },
+                { name: 'Kirby', image: 'kirby.png' },
+                { name: 'Link', image: 'link.png' },
+                { name: 'Little Mac', image: 'little_mac.png' },
+                { name: 'Lucario', image: 'lucario.png' },
+                { name: 'Lucas', image: 'lucas.png' },
+                { name: 'Lucina', image: 'lucina.png' },
+                { name: 'Luigi', image: 'luigi.png' },
+                { name: 'Mario', image: 'mario.png' },
+                { name: 'Marth', image: 'marth.png' },
+                { name: 'Mega Man', image: 'mega_man.png' },
+                { name: 'Meta Knight', image: 'meta_knight.png' },
+                { name: 'Mewtwo', image: 'mewtwo.png' },
+                { name: 'Mii Fighters', image: 'mii_fighters.png' },
+                { name: 'Mr Game and Watch', image: 'mr_game_and_watch.png' },
+                { name: 'Ness', image: 'ness.png' },
+                { name: 'Olimar', image: 'olimar.png' },
+                { name: 'Pac-man', image: 'pac-man.png' },
+                { name: 'Palutena', image: 'palutena.png' },
+                { name: 'Peach', image: 'peach.png' },
+                { name: 'Pikachu', image: 'pikachu.png' },
+                { name: 'Pit', image: 'pit.png' },
+                { name: 'Rob', image: 'rob.png' },
+                { name: 'Robin', image: 'robin.png' },
+                { name: 'Rosalina', image: 'rosalina.png' },
+                { name: 'Roy', image: 'roy.png' },
+                { name: 'Ryu', image: 'ryu.png' },
+                { name: 'Samus', image: 'samus.png' },
+                { name: 'Sheik', image: 'sheik.png' },
+                { name: 'Shulk', image: 'shulk.png' },
+                { name: 'Sonic', image: 'sonic.png' },
+                { name: 'Toon Link', image: 'toon_link.png' },
+                { name: 'Villager', image: 'villager.png' },
+                { name: 'Wario', image: 'wario.png' },
+                { name: 'Wii Fit Trainer', image: 'wii_fit_trainer.png' },
+                { name: 'Yoshi', image: 'yoshi.png' },
+                { name: 'Zelda', image: 'zelda.png' },
+                { name: 'Zero Suit Samus', image: 'zero_suit_samus.png' }
+            ];
+        };
+        return CharacterService;
+    }());
+    angular.module('MadnessCup').service('Character', CharacterService);
+})(MadnessCup || (MadnessCup = {}));
+
 /// <reference path="../../tsd/tsd.d.ts"/>
 var MadnessCup;
 (function (MadnessCup) {
@@ -69711,6 +69892,26 @@ var MadnessCup;
         return FallBackground;
     }());
     angular.module('MadnessCup').service('FallBackground', FallBackground);
+})(MadnessCup || (MadnessCup = {}));
+
+/// <reference path="../../tsd/angularjs/angular.d.ts"/>
+var MadnessCup;
+(function (MadnessCup) {
+    var PlayerService = (function () {
+        function PlayerService() {
+            // On Load
+        }
+        PlayerService.prototype.avatar = function (avatar) {
+            return {
+                backgroundImage: 'url(' + avatar + ')',
+                backgroundPosition: 'center',
+                padding: 0,
+                backgroundSize: 'cover'
+            };
+        };
+        return PlayerService;
+    }());
+    angular.module('MadnessCup').service('Player', PlayerService);
 })(MadnessCup || (MadnessCup = {}));
 
 /// <reference path="../../tsd/angularjs/angular.d.ts"/>

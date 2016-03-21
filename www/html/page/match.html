@@ -1,0 +1,22 @@
+
+<ion-view view-title="Match">
+  <ion-content class="state-match">
+    <div class="card">
+      <div class="row players">
+        <div class="col-ss-5 playerOne">
+          <div ng-style="ctrl.playerAvatar(ctrl.matchup.p1.avatar)" ng-click="ctrl.selectCharacter(&quot;p1&quot;)" class="character"></div>
+          <h3 class="playerName">{{ctrl.matchup.p1.name_first}}</h3>
+        </div>
+        <div class="col-ss-2">- VS -</div>
+        <div class="col-ss-5 playerTwo">
+          <div ng-style="ctrl.playerAvatar(ctrl.matchup.p2.avatar)" ng-click="ctrl.selectCharacter(&quot;p2&quot;)" class="character"></div>
+          <h3 class="playerName">{{ctrl.matchup.p2.name_first}}</h3>
+        </div>
+      </div>
+      <div class="row maps">
+        <div ng-repeat="map in ctrl.maps" ng-style="ctrl.mapBackground(map)" ng-click="ctrl.banMap($index)" ng-class="{banned: ctrl.banned.indexOf($index) &gt; -1}" class="col-lg-2 col-sm-4 col-ss-6"></div>
+      </div>
+      <!--countdown(timer="10", radius="70", color="red", done="ctrl.thisFn()")-->
+    </div>
+  </ion-content>
+</ion-view>

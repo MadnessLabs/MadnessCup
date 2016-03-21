@@ -1,0 +1,6 @@
+.timer
+    h2.counter {{ctrl.counter}}
+    svg(width='160', height='160', xmlns='http://www.w3.org/2000/svg')
+        g
+            title Layer 1
+            circle#circle.circle_animation(r='{{ctrl.radius}}', cy='81', cx='81', stroke-width='8', stroke='#6fdb6f', fill='none', ng-style='{"stroke-dashoffset": ctrl.offset + "px", "stroke-dasharray": ctrl.finalOffset}')

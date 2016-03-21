@@ -12,7 +12,8 @@ module MadnessCup {
             enjin,
             $firebaseObject,
             protected $scope,
-            protected $state
+            protected $state,
+            protected Player
         ) {
             // ON LOAD    
             this.round = $stateParams.round;   
@@ -23,12 +24,7 @@ module MadnessCup {
         }
 
         playerAvatar(avatar) {
-            return { 
-                backgroundImage: 'url(' + avatar + ')', 
-                backgroundPosition: 'center', 
-                padding: 0,
-                backgroundSize: 'cover'
-            };
+            return this.Player.avatar(avatar);
         }
 
         selectedStage(versus) {

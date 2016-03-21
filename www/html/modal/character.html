@@ -1,0 +1,16 @@
+
+<ion-modal-view class="modal-character">
+  <ion-header-bar class="bar-positive">
+    <h1 class="title">Character Selection</h1><a ng-click="ctrl.closeModal()" class="button button-icon ion-close-round"></a>
+  </ion-header-bar>
+  <ion-content overflow-scroll="true">
+    <ion-list>
+      <ion-item class="item-input"><i class="icon ion-search placeholder-icon"></i>
+        <input type="search" placeholder="Search" ng-model="ctrl.characterSearch"/>
+      </ion-item>
+      <ion-item ng-repeat="character in ctrl.characters | filter: ctrl.characterSearch" ng-click="ctrl.setCharacter(character)" class="item-avatar"> <img ng-src="img/character/{{character.image}}"/>
+        <h2>{{character.name}} </h2>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-modal-view>

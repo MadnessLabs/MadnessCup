@@ -19,7 +19,10 @@ module MadnessCup {
 'controller':'MadnessCup.HomeController as ctrl'})
 				.state('tournament', {'url':'/tournament/:id', 
 'templateUrl':'html/page/tournament.html', 
-'controller':'MadnessCup.TournamentController as ctrl'});
+'controller':'MadnessCup.TournamentController as ctrl'})
+				.state('match', {'url':'/tournament/:id/round/:round/matchup/:matchup', 
+'templateUrl':'html/page/match.html', 
+'controller':'MadnessCup.MatchController as ctrl'});
 
             $urlRouterProvider.otherwise(function($injector, $location) {
                 var $state = $injector.get('$state');

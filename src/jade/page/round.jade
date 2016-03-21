@@ -2,18 +2,13 @@ ion-view
     ion-nav-title {{ctrl.tournament.name}}: Round {{ctrl.round}}
     ion-content(class='state-round')
         .row.main-grid
-            .col-xs-12.col-sm-6.col-lg-4(ng-repeat="versus in ctrl.tournament.rounds[ctrl.round - 1]")
-                .card(ng-style='ctrl.selectedStageBackground($index)')
+            .col-ss-12.col-sm-6.col-lg-4(ng-repeat="(key, versus) in ctrl.tournament.rounds[ctrl.round - 1]")
+                .card(ng-style='ctrl.selectedStageBackground($index)' ui-sref="match({id: ctrl.tournament.$id, round: ctrl.round, matchup: key})")
                     .row 
-                        .col-xs-5.playerOne
+                        .col-ss-5.playerOne
                             .character(ng-style='ctrl.playerAvatar(versus.p1.avatar)')
                             h3.playerName {{versus.p1.name_first}}
-                        .col-xs-2  - VS - 
-                        .col-xs-5.playerTwo
+                        .col-ss-2  - VS - 
+                        .col-ss-5.playerTwo
                             .character(ng-style='ctrl.playerAvatar(versus.p2.avatar)')
                             h3.playerName {{versus.p2.name_first}}
-                    ion-item.item-divider.item-icon-right 
-                        h2 Matches
-                        span.badge {{versus.matches.length}}
-                        i.icon.ion-plus-round
-                    ion-item Match 1

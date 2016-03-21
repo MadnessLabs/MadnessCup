@@ -1,0 +1,19 @@
+ion-view(view-title='Match')
+    ion-content(class='state-match')
+        .card
+            .row.players
+                .col-ss-5.playerOne
+                    .character(ng-style='ctrl.playerAvatar(ctrl.matchup.p1.avatar)' ng-click='ctrl.selectCharacter("p1")')
+                    h3.playerName {{ctrl.matchup.p1.name_first}}
+                .col-ss-2 - VS -
+                .col-ss-5.playerTwo
+                    .character(ng-style='ctrl.playerAvatar(ctrl.matchup.p2.avatar)' ng-click='ctrl.selectCharacter("p2")')
+                    h3.playerName {{ctrl.matchup.p2.name_first}}
+            .row.maps
+                .col-lg-2.col-sm-4.col-ss-6(
+                    ng-repeat="map in ctrl.maps" 
+                    ng-style="ctrl.mapBackground(map)" 
+                    ng-click="ctrl.banMap($index)" 
+                    ng-class="{banned: ctrl.banned.indexOf($index) > -1}"
+                )
+            //countdown(timer="10", radius="70", color="red", done="ctrl.thisFn()")
