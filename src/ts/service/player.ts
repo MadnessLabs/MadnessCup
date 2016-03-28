@@ -15,6 +15,15 @@ module MadnessCup {
                 backgroundSize: 'cover'
             };
         }
+
+        character(avatar) {
+            return {
+                backgroundImage: 'url(' + avatar + ')',
+                backgroundPosition: 'center',
+                padding: 10,
+                backgroundSize: 'cover'
+            };
+        }
 	}
 
 	angular.module('MadnessCup').service('Player', PlayerService);

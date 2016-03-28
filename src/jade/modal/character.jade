@@ -9,4 +9,4 @@ ion-modal-view.modal-character
                 input(type="search" placeholder="Search" ng-model="ctrl.characterSearch")
             ion-item.item-avatar(ng-repeat="character in ctrl.characters | filter: ctrl.characterSearch" ng-click="ctrl.setCharacter(character)") 
                 img(ng-src="img/character/{{character.image}}")
-                h2 {{character.name}} 
+                h2 {{character.name}}

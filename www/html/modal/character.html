@@ -9,7 +9,7 @@
         <input type="search" placeholder="Search" ng-model="ctrl.characterSearch"/>
       </ion-item>
       <ion-item ng-repeat="character in ctrl.characters | filter: ctrl.characterSearch" ng-click="ctrl.setCharacter(character)" class="item-avatar"> <img ng-src="img/character/{{character.image}}"/>
-        <h2>{{character.name}} </h2>
+        <h2>{{character.name}}</h2>
       </ion-item>
     </ion-list>
   </ion-content>

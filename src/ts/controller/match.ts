@@ -4,7 +4,6 @@ module MadnessCup {
 
     class MatchController {
         maps: any;
-        banned: any;
         offset: number;
         counter: number;
         finalOffset: number;
@@ -14,6 +13,7 @@ module MadnessCup {
         characters: any;
         player: string;
         characterSearch: string;
+        match: number;
 
         constructor(
             protected $interval,
@@ -38,8 +38,6 @@ module MadnessCup {
 
             this.characters = Character.all();
 
-            this.banned = [];
-
             var matchupUrl =
                 this.enjin.db.firebase.host
                 + 'tournament/'
@@ -51,6 +49,22 @@ module MadnessCup {
 
             $firebaseObject(new Firebase(matchupUrl)).$loaded(function(res){
                 this.matchup = res;
+                
+                if (!this.matchup.matches) {
+                    this.matchup.matches = { 
+                        1: {
+                            banned: []
+                        } 
+                    };
+                    this.match = 1;
+                }// else { Go to newest match }
+
+                this.match = 1;
+
+                if (!this.matchup.matches[this.match].banned) {
+                    this.matchup.matches[this.match].banned = [];
+                }
+                
             }.bind(this));
 
             // this.countDown(10, function() {
@@ -63,8 +77,28 @@ module MadnessCup {
         }
 
         banMap(index) {
-            if (this.banned.indexOf(index) === -1) {
-                this.banned.push(index);
+            if (this.matchup.matches[this.match].banned.indexOf(index) === -1) {
+                // This this the first match
+                if (this.match === 1) {
+                    // Ban Rotation
+                    // Banned Maps < 6  HINT: .length
+                    if (this.matchup.matches[this.match].banned.length < 5) {
+                        this.matchup.matches[this.match].banned.push(index);
+                        this.matchup.$save();
+                        if (this.matchup.matches[this.match].banned.length === 5) {
+                            // Find map that's not banned
+                            // Set it to this.map
+                            angular.forEach(this.maps, function(value, key) {
+                                if (this.matchup.matches[this.match].banned.indexOf(key) === -1) {
+                                    this.matchup.matches[this.match].map = value;
+                                    this.matchup.$save();
+                                }
+                            }.bind(this));
+                        }
+                    }
+                } else {
+                    // Ban 1 Map and Looser Picks
+                }   
             }
         }
 
@@ -91,8 +125,11 @@ module MadnessCup {
             }.bind(this), 1000, time);
         }
 
-        playerAvatar(avatar) {
-            var playerAvatar = this.Player.avatar(avatar); 
+        playerAvatar(avatar, player) {
+            var playerAvatar = this.Player.avatar(avatar);
+            if (this.matchup && this.matchup.matches[this.match][player]) {
+                playerAvatar = this.Player.character('img/character/' + this.matchup.matches[this.match][player].image);
+            }
             return playerAvatar;
         }
 
@@ -113,9 +150,19 @@ module MadnessCup {
             }.bind(this));
         }
         setCharacter(character) {
-            this.matchup[this.player].avatar = 'img/character/' + character.image;
+            //this.matchup[this.player].avatar = 'img/character/' + character.image;
+            this.matchup.matches[this.match][this.player] = character;
             this.closeModal();
             this.characterSearch = '';
+            this.matchup.$save();
+        }
+
+        selectedStageBackground() {
+            var background = null;
+            if (this.matchup && this.matchup.matches[this.match].map) {
+                background = { backgroundImage: 'url(img/stage/' + this.matchup.matches[this.match].map + ')' };
+            }
+            return background;
         }
     }
 
